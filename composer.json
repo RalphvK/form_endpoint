@@ -10,6 +10,7 @@
     "scripts": {
         "migration": "php docs/scripts/migration.php",
         "migrate": "php docs/scripts/migrate.php",
-        "form": "php docs/scripts/form.php"
+        "form": "php docs/scripts/form.php",
+        "env": "php docs/scripts/env.php"
     }
 }
