@@ -55,7 +55,7 @@
                     $sql = 'INSERT INTO `migrations` (`name`) VALUES ("'.$migration_name.'");';
                     DB::conn()->exec($sql);
                     // $migration_name();
-                    echo "\033[92mExecuted migration: ".$migration_name."\033[0m\n";   
+                    echo "\033[92mExecuted migration: ".$migration_name."\033[0m\n";
                 } else {
                     echo "\033[91mError executing migration: ".$migration_name."\033[0m\n";
                 }

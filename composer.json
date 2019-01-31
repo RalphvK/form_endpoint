@@ -9,6 +9,7 @@
     },
     "scripts": {
         "migration": "php docs/scripts/migration.php",
-        "migrate": "php docs/scripts/migrate.php"
+        "migrate": "php docs/scripts/migrate.php",
+        "form": "php docs/scripts/form.php"
     }
 }
