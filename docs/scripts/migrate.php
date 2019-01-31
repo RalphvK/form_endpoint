@@ -50,7 +50,7 @@
             if (!migrationExists($migration_name)) {
                 // run migration
                 include $migrations_path.$fileinfo->getFilename();
-                if ($migration_name()) {
+                if ($migration_name() !== false) {
                     // register migration
                     $sql = 'INSERT INTO `migrations` (`name`) VALUES ("'.$migration_name.'");';
                     DB::conn()->exec($sql);
