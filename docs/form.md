@@ -1,4 +1,6 @@
-## How to register a new form
+## Registering a new form
+
+#### Create new form entry
 
 Register a new form by running the ```form``` command. This command will create a new form entry in the database with a randomly generated public ID. The command will return this ID in the output.
 
@@ -6,13 +8,34 @@ Register a new form by running the ```form``` command. This command will create 
 composer form
 ```
 
-Optionally, the command accepts a JSON string as a parameter to define a set of validation rules for the ```rakit/validation``` library. However, since doing this will require you to escape all the quotes, the easiest way to add these rules will be to add them in the database after the form record has been created.
+Optionally, the command accepts a comma delimited string as a parameter which will server as the whitelist for allowed CORS origins. If no parameters is provided, you will have to set origins later when editing the database record.
 
 ```bash
-composer form "{\"name\": \"required|max:200\"}"
+composer form "https://example.com"
 ```
 
-```rakit/validation``` documentation can be found [on Github](https://github.com/rakit/validation).
+#### Set field validation rules
+
+After the record has been created, add a json array containing validation rules in the ```validation_rules``` column field. This JSON string will be loaded as a PHP array via the ```json_decode()``` function and passed to the validation method. For example:
+
+```json
+{
+   "name": "required|min:2|max:200",
+   "company": "max:200",
+   "email": "required|email",
+   "message": "required|min:10|max:50000"
+}
+```
+
+The fields are validated using the ```rakit/validation``` library. Its documentation can be found [on Github](https://github.com/rakit/validation).
+
+#### CORS whitelist
+
+You can set allowed cross-origins in the ```whitelist``` column. The syntax is a simple ```,``` or ```, ``` delimited string. For example:
+
+```csv
+https://example.com, https://cors.org
+```
 
 ## Hooking up the form
 

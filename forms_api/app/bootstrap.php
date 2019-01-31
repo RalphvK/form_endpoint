@@ -11,14 +11,12 @@
     $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
     $dotenv->load();
 
-    // CORS enable
-    require __DIR__.'/CORS_headers.php';
-
     // helpers
     require __DIR__.'/helpers/path.php';
     require path::app('/helpers/database.php');
     require path::app('/helpers/json.php');
     require path::app('/helpers/generate.php');
+    require path::app('/helpers/CORS.php');
 
     // router
     require path::app('routes.php');

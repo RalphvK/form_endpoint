@@ -7,7 +7,7 @@
 
         static public function post($request) {
             // get rules from database
-            $rules = formsController::getRules($request->form_id);
+            $rules = formsController::rules($request->form_id);
             if (!$rules) {
                 // return error
                 return json_file([

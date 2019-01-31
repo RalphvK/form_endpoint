@@ -2,26 +2,32 @@
 
     class formsController {
 
-        static public function getRules($public_id) {
-            $stmt = DB::conn()->prepare("SELECT validation_rules FROM forms WHERE public_id = ?");
+        static public function rules($public_id) {
+            $stmt = DB::conn()->prepare("SELECT validation_rules, whitelist FROM forms WHERE public_id = ?");
             $stmt->execute([$public_id]);
             $result = $stmt->fetch();
             if ($result) {
+                // set CORS headers
+                CORS::setHeaders($result['whitelist']);
+                // return validation rules
                 return json_decode($result['validation_rules'], true); // decode to array
             } else {
                 return false;
             }
         }
 
-        static public function insert($validation_rules) {
+        static public function insert($fields = []) {
+            $defaults = ["validation_rules" => [], "whitelist" => ""];
+            $fields = array_merge($defaults, $fields);
             // insert function
-            $insert = function($stmt) use ($validation_rules) {
+            $insert = function($stmt) use ($fields) {
                 try {
                     // generate public id
                     $public_id = generate::form_id();
                     $stmt->execute([
                         'public_id' => $public_id,
-                        'validation_rules' => json_encode($validation_rules)
+                        'validation_rules' => json_encode($fields['validation_rules']),
+                        'whitelist' => $fields['whitelist']
                     ]);
                 } catch (PDOException $e) {
                     // key constraint (duplicate)
@@ -37,7 +43,7 @@
             };
 
             // prepare query
-            $stmt = DB::conn()->prepare('INSERT INTO forms (public_id, validation_rules) VALUES (:public_id, :validation_rules)');
+            $stmt = DB::conn()->prepare('INSERT INTO forms (public_id, validation_rules, whitelist) VALUES (:public_id, :validation_rules, :whitelist)');
             
             // run insert
             $attemptInsert = true;

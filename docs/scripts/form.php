@@ -3,9 +3,9 @@
     require __DIR__.'/config.php';
 
     if (isset($argv[1])) {
-        $validation_rules = json_decode($argv[1]);
+        $whitelist = $argv[1];
     } else {
-        $validation_rules = [];
+        $whitelist = "";
     }
 
     $back_end_path = COMPOSER_CFG::BACK_END_PATH;
@@ -26,7 +26,7 @@
     require path::app('controllers/formsController.php');
 
     // insert
-    $result = formsController::insert($validation_rules);
+    $result = formsController::insert(['whitelist' => $whitelist]);
 
     if ($result) {
         echo "\033[92mAdded form with public ID: ".$result."\033[0m\n";
