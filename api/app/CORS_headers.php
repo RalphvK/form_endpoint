@@ -1,12 +1,7 @@
 <?php
 
     // origin whitelist
-    $origin_whitelist = [
-        'http://127.0.0.1:5500',
-        'https://scan.insightworship.nl',
-        'https://api.stagetix.nl',
-        'https://stagetix.nl'
-    ];
+    $origin_whitelist = explode(',', $_ENV['CORS_WHITELIST']);
 
     if (in_array($_SERVER["HTTP_ORIGIN"], $origin_whitelist)) {
         header('Access-Control-Allow-Origin: '.$_SERVER["HTTP_ORIGIN"]);
