@@ -1,7 +1,9 @@
 <?php
 
-    $back_end_path = 'api/';
-    $migrations_path = 'docs/migrations/';
+    require __DIR__.'/config.php';
+
+    $back_end_path = COMPOSER_CFG::BACK_END_PATH;
+    $migrations_path = COMPOSER_CFG::MIGRATIONS_PATH;
 
     // require composer packages
     require $back_end_path.'vendor/autoload.php';

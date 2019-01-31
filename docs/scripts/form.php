@@ -1,12 +1,14 @@
 <?php
 
+    require __DIR__.'/config.php';
+
     if (isset($argv[1])) {
         $validation_rules = json_decode($argv[1]);
     } else {
         $validation_rules = [];
     }
 
-    $back_end_path = 'api/';
+    $back_end_path = COMPOSER_CFG::BACK_END_PATH;
 
     // require composer packages
     require $back_end_path.'vendor/autoload.php';

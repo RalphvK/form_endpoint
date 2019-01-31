@@ -1,7 +1,10 @@
 <?php
+
+    require __DIR__.'/config.php';
+
     // config
     $migration = [
-        'path' => 'docs/migrations/',
+        'path' => COMPOSER_CFG::MIGRATIONS_PATH,
         'prefix' => 'migration_'
     ];
 
