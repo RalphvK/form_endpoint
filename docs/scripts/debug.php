@@ -4,15 +4,25 @@
 
     $_ENV['environment'] = 'debug';
 
-    echo "\033[94mDEBUG START\033[0m\n";
-    echo "\033[94m".str_repeat("\u{2588}", 80)."\033[0m\n";
-
     // bootstrap
+    echo "\n\033[102m DOCUMENT START \033[0m\n\n";
+    echo "\033[32m";
     require COMPOSER_CFG::BACK_END_PATH.'app/bootstrap.php';
+    echo "\033[0m\n";
 
-    $post = json_decode($_ENV['DEBUG_POST'], true);
-    $formCfg = json_decode($_ENV['DEBUG_FORMCFG'], true);
+    if (isset($argv[1])) {
 
-    var_dump($formCfg);
+        echo "\n\n\033[104m DEBUG START \033[0m\n";
+        echo "\033[94m\n";
 
-    notify::via('email')->hook($post, $formCfg);
+        // email test
+        if ($argv[1] == 'mail') {
+            $post = json_decode($_ENV['DEBUG_POST'], true);
+            $formCfg = json_decode($_ENV['DEBUG_FORMCFG'], true);
+            var_dump($formCfg);
+            notify::via('email')->hook($post, $formCfg);
+        }
+
+    }
+
+    echo "\033[0m\n";
