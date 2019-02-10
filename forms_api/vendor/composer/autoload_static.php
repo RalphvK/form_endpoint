@@ -11,6 +11,10 @@ class ComposerStaticInit2934a1b941856093922b34d315a46e82
         array (
             'Rakit\\Validation\\' => 17,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'K' => 
         array (
             'Klein\\' => 6,
@@ -25,6 +29,10 @@ class ComposerStaticInit2934a1b941856093922b34d315a46e82
         'Rakit\\Validation\\' => 
         array (
             0 => __DIR__ . '/..' . '/rakit/validation/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Klein\\' => 
         array (

@@ -1,16 +1,18 @@
 {
     "config": {
-        "vendor-dir": "api/vendor"
+        "vendor-dir": "forms_api/vendor/"
     },
     "require": {
         "klein/klein": "^2.1",
         "vlucas/phpdotenv": "^2.5",
-        "rakit/validation": "^1.1"
+        "rakit/validation": "^1.1",
+        "phpmailer/phpmailer": "^6.0"
     },
     "scripts": {
         "migration": "php docs/scripts/migration.php",
         "migrate": "php docs/scripts/migrate.php",
         "form": "php docs/scripts/form.php",
-        "env": "php docs/scripts/env.php"
+        "env": "php docs/scripts/env.php",
+        "debug": "php docs/scripts/debug.php"
     }
 }
