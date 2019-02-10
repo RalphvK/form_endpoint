@@ -10,17 +10,9 @@
     // bootstrap
     require COMPOSER_CFG::BACK_END_PATH.'app/bootstrap.php';
 
-    notify::via('email')->send([
-        'to' => [
-            'address' => 'ralphnld@gmail.com',
-            'name' => 'Ralph'
-        ],
-        'replyTo' => [
-            [
-                'address' => 'test@example.com',
-                'name' => 'Example.com'
-            ]
-        ],
-        'html' => 'This is a test mail',
-        'plain' => 'This is a test mail'
-    ]);
+    $post = json_decode($_ENV['DEBUG_POST'], true);
+    $formCfg = json_decode($_ENV['DEBUG_FORMCFG'], true);
+
+    var_dump($formCfg);
+
+    notify::via('email')->hook($post, $formCfg);

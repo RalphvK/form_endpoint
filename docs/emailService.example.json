@@ -1,0 +1,18 @@
+{
+    "smtp": {
+        "host": "smtp.example.com",
+        "port": "465",
+        "username": "example",
+        "password": "",
+        "from_address": "noreply@example.com",
+        "from_name": "Form Endpoint"
+    },
+    "to": {
+        "address": "admin@example.com",
+        "name": "Admin"
+    },
+    "replyTo": {
+        "address_field": "email",
+        "name_field": "name"
+    }
+}

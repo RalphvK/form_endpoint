@@ -3,6 +3,37 @@
     use PHPMailer\PHPMailer\PHPMailer;
 
     class emailService {
+
+        public function hook($fields, $formCfg) {
+            return $this->send([
+                'from' => [
+                    'address' => $formCfg['smtp']['from_address'],
+                    'name' => $formCfg['smtp']['from_name']
+                ],
+                'replyTo' => [
+                    [
+                        'address' => $fields[$formCfg['replyTo']['address_field']],
+                        'name' => $fields[$formCfg['replyTo']['name_field']]
+                    ]
+                ],
+                'to' => [
+                    'address' => $formCfg['to']['address'],
+                    'name' => $formCfg['to']['name']
+                ],
+                'subject' => 'You have a new message from '.$fields[$formCfg['replyTo']['name_field']],
+                'html' => $this->generateHTML($fields),
+                'plain' => $this->generatePlain($fields),
+                'smtp' => $formCfg['smtp']
+            ]);
+        }
+
+        public function generateHTML($fields) {
+            return '<pre><code>'.json_encode($fields, JSON_PRETTY_PRINT).'</pre></code>';
+        }
+
+        public function generatePlain($fields) {
+            return json_encode($fields, JSON_PRETTY_PRINT);
+        }
         
         public function send($options) {
             echo environment::is('debug') ? "Sending Email" : null;
