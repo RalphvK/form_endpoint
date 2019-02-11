@@ -25,10 +25,12 @@
                 return json_file($validation->errors()->firstOfAll(), 'error');
             } else {
                 if (self::insertMessage($request->form_id, $_POST)) {
+                    // send success response
+                    $response = json_file_expedite([], 'success');
                     // notify
                     notify::callHooks($_POST, $form->notifiers);
-                    // return success
-                    return json_file([], 'success');
+                    // return response
+                    return $response;
                 } else {
                     return json_file([
                         'error' => 'unknown_error',

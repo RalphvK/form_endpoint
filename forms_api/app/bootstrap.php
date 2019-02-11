@@ -10,6 +10,10 @@
         ini_set('display_errors', 0);
     }
 
+    ini_set("implicit_flush", 1);
+    while (@ob_end_flush());
+    ob_implicit_flush(true);
+
     // require composer packages
     require __DIR__.'/../vendor/autoload.php';
 
