@@ -1,9 +1,9 @@
 <?php
 
-    function migration_1548970801() {
+    function migration_1549898498() {
         $flag = true;
         // add whitelist column
-        $sql = "ALTER TABLE forms ADD COLUMN whitelist VARCHAR(256) AFTER validation_rules;";
+        $sql = "ALTER TABLE forms ADD COLUMN notifiers TEXT NULL AFTER validation_rules;";
         if (DB::conn()->exec($sql) !== 0) {
             $flag = false;
         }
