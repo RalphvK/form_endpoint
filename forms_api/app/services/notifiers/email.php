@@ -4,7 +4,15 @@
 
     class emailService {
 
-        public function hook($fields, $formCfg) {
+        /**
+         * hook() method
+         * default method called by the notify class' callHooks() method
+         *
+         * @param [array] $data - form data
+         * @param [array] $formCfg - configuration from database
+         * @return void
+         */
+        public function hook($data, $formCfg) {
             return $this->send([
                 'from' => [
                     'address' => $formCfg['smtp']['from_address'],
@@ -12,27 +20,27 @@
                 ],
                 'replyTo' => [
                     [
-                        'address' => $fields[$formCfg['replyTo']['address_field']],
-                        'name' => $fields[$formCfg['replyTo']['name_field']]
+                        'address' => $data[$formCfg['replyTo']['address_field']],
+                        'name' => $data[$formCfg['replyTo']['name_field']]
                     ]
                 ],
                 'to' => [
                     'address' => $formCfg['to']['address'],
                     'name' => $formCfg['to']['name']
                 ],
-                'subject' => 'You have a new message from '.$fields[$formCfg['replyTo']['name_field']],
-                'html' => $this->generateHTML($fields),
-                'plain' => $this->generatePlain($fields),
+                'subject' => 'You have a new message from '.$data[$formCfg['replyTo']['name_field']],
+                'html' => $this->generateHTML($data),
+                'plain' => $this->generatePlain($data),
                 'smtp' => $formCfg['smtp']
             ]);
         }
 
-        public function generateHTML($fields) {
-            return '<pre><code>'.json_encode($fields, JSON_PRETTY_PRINT).'</pre></code>';
+        public function generateHTML($data) {
+            return '<pre><code>'.json_encode($data, JSON_PRETTY_PRINT).'</pre></code>';
         }
 
-        public function generatePlain($fields) {
-            return json_encode($fields, JSON_PRETTY_PRINT);
+        public function generatePlain($data) {
+            return json_encode($data, JSON_PRETTY_PRINT);
         }
         
         public function send($options) {
