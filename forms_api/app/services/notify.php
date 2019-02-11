@@ -19,8 +19,17 @@
         }
 
         static public function callHooks($formData, $methodsArray) {
-            foreach ($methodsArray as $method => $value) {
-                self::via($method)->hook($formData, $value);
+            if (is_array($methodsArray)) {
+                $canary = true;
+                foreach ($methodsArray as $method => $value) {
+                    $result = self::via($method)->hook($formData, $value);
+                    if (!$result) {
+                        $canary = false;
+                    }
+                }
+                return $canary;
+            } else {
+                return false;
             }
         }
 
