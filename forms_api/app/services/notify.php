@@ -18,6 +18,14 @@
             return new self::$methods[$key];
         }
 
+        /**
+         * callHooks function
+         * function to be called upon form submission, using the methodsArray from the notifiers column in de forms table
+         *
+         * @param array $formData
+         * @param array $methodsArray
+         * @return boolean
+         */
         static public function callHooks($formData, $methodsArray) {
             if (is_array($methodsArray)) {
                 $canary = true;
