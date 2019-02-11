@@ -13,6 +13,9 @@
          * @return void
          */
         public function hook($data, $formCfg) {
+            // sanitize 
+            $processed = $this->sanitizeInput($data, $formCfg);
+            // send
             return $this->send([
                 'from' => [
                     'address' => $formCfg['smtp']['from_address'],
@@ -20,23 +23,34 @@
                 ],
                 'replyTo' => [
                     [
-                        'address' => $data[$formCfg['replyTo']['address_field']],
-                        'name' => $data[$formCfg['replyTo']['name_field']]
+                        'address' => $processed['replyTo']['address'],
+                        'name' => $processed['replyTo']['address']
                     ]
                 ],
                 'to' => [
                     'address' => $formCfg['to']['address'],
                     'name' => $formCfg['to']['name']
                 ],
-                'subject' => 'You have a new message from '.$data[$formCfg['replyTo']['name_field']],
-                'html' => $this->generateHTML($data),
-                'plain' => $this->generatePlain($data),
+                'subject' => 'You have a new message from '.$processed['replyTo']['address'],
+                'html' => $this->generateHTML($processed['data']),
+                'plain' => $this->generatePlain($processed['data']),
                 'smtp' => $formCfg['smtp']
             ]);
         }
 
+        public function sanitizeInput($data, $formCfg) {
+            $a = [];
+            $a['replyTo']['address'] = filter_var($data[$formCfg['replyTo']['address_field']], FILTER_SANITIZE_EMAIL);
+            $a['replyTo']['name'] = filter_var($data[$formCfg['replyTo']['name_field']], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            // data for message body
+            foreach ($data as $key => $value) {
+                $a['data'][$key] = htmlspecialchars($value);
+            }
+            return $a;
+        }
+
         public function generateHTML($data) {
-            return '<pre><code>'.json_encode($data, JSON_PRETTY_PRINT).'</pre></code>';
+            return '<pre><code>'.json_encode($data, JSON_PRETTY_PRINT).'</code></pre>';
         }
 
         public function generatePlain($data) {
