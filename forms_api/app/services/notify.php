@@ -18,6 +18,12 @@
             return new self::$methods[$key];
         }
 
+        static public function callHooks($formData, $methodsArray) {
+            foreach ($methodsArray as $method => $value) {
+                self::via($method)->hook($formData, $value);
+            }
+        }
+
     }
 
     notify::init();

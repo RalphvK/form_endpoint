@@ -19,8 +19,7 @@
         if ($argv[1] == 'mail') {
             $post = json_decode($_ENV['DEBUG_POST'], true);
             $formCfg = json_decode($_ENV['DEBUG_FORMCFG'], true);
-            var_dump($formCfg);
-            notify::via('email')->hook($post, $formCfg);
+            notify::callHooks($post, $formCfg);
         }
 
     }
