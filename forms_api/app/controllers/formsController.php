@@ -2,15 +2,18 @@
 
     class formsController {
 
-        static public function rules($public_id) {
-            $stmt = DB::conn()->prepare("SELECT validation_rules, whitelist FROM forms WHERE public_id = ?");
+        static public function getForm($public_id) {
+            $stmt = DB::conn()->prepare("SELECT validation_rules, whitelist, notifiers FROM forms WHERE public_id = ?");
             $stmt->execute([$public_id]);
             $result = $stmt->fetch();
             if ($result) {
                 // set CORS headers
                 CORS::setHeaders($result['whitelist']);
-                // return validation rules
-                return json_decode($result['validation_rules'], true); // decode to array
+                // return object
+                $form = new stdClass();
+                $form->validation_rules = json_decode($result['validation_rules'], true);
+                $form->notifiers = json_decode($result['notifiers'], true);
+                return $form; // decode to array
             } else {
                 return false;
             }

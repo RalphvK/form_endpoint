@@ -7,7 +7,8 @@
 
         static public function post($request) {
             // get rules from database
-            $rules = formsController::rules($request->form_id);
+            $form = formsController::getForm($request->form_id);
+            $rules = $form->validation_rules;
             if (!$rules) {
                 // return error
                 return json_file([
@@ -24,6 +25,8 @@
                 return json_file($validation->errors()->firstOfAll(), 'error');
             } else {
                 if (self::insertMessage($request->form_id, $_POST)) {
+                    // notify
+                    notify::callHooks($_POST, $form->notifiers);
                     // return success
                     return json_file([], 'success');
                 } else {
