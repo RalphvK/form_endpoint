@@ -27,10 +27,24 @@
             notify::callHooks($post, $formCfg);
         }
 
+        // forms
+        if (arg_is('forms')) {
+            $forms = ORM::for_table('forms')->find_many();
+            foreach ($forms as $key => $form) {
+                var_dump($form->as_array());
+            }
+        }
+
         // ORM
         if (arg_is('orm')) {
-            $messages= ORM::for_table('messages')->find_many();
-            var_dump($messages);
+            require path::app('controllers/formsController.php');
+            $public_id = 'exampleid';
+            $form = formsController::getForm($public_id);
+            if ($form) {
+                var_dump($form->as_array());
+            } else {
+                var_dump($form);
+            }
         }
 
     }
