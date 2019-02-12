@@ -27,6 +27,12 @@
             notify::callHooks($post, $formCfg);
         }
 
+        // ORM
+        if (arg_is('orm')) {
+            $messages= ORM::for_table('messages')->find_many();
+            var_dump($messages);
+        }
+
     }
 
     echo "\033[0m\n";

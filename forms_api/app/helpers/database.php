@@ -22,6 +22,9 @@
 
             $PDO_dsn = "mysql:host=".$db_config['host'].";dbname=".$db_config['database'].";charset=".$db_config['charset'];
             self::$connection = new PDO($PDO_dsn, $db_config['user'], $db_config['password'], $PDO_opt);
+
+            // hook up ORM
+            ORM::set_db(self::$connection);
         }
 
         // get connection method
