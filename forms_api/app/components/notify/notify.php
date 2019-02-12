@@ -1,12 +1,12 @@
 <?php
 
-    class notify extends service {
+    class notify {
 
         protected static $methods;
 
         static public function init() {
             self::$methods = [];
-            self::includeAll('notifiers');
+            includeFolder(path::this('notifiers'));
         }
 
         static public function register($key, $className) {

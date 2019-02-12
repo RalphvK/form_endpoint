@@ -30,9 +30,8 @@
     require path::app('helpers/includeFolder.php');
     require path::app('helpers/environments.php');
 
-    // services
-    require path::app('services/service.class.php');
-    require path::app('services/notify.php');
+    // components
+    require path::component('notify');
 
     // router
     require path::app('routes.php');
