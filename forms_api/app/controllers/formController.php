@@ -41,14 +41,14 @@
         }
 
         static public function insertMessage($form_id, $fields) {
-            // prepare query
-            $stmt = DB::conn()->prepare('INSERT INTO messages (`form_id`, `from`, `content`, `ip`) VALUES (:form_id, :from, :content, :ip)');
-            return $stmt->execute([
-                'form_id' => $form_id,
-                'from' => isset($fields['email']) ? $fields['email'] : 'unknown',
-                'content' => json_encode($fields),
-                'ip' => $_SERVER['REMOTE_ADDR']
-            ]);
+            $message = ORM::for_table('messages')->create();
+            
+            $message->form_id = $form_id;
+            $message->from = isset($fields['email']) ? $fields['email'] : 'unknown';
+            $message->content = json_encode($fields);
+            $message->ip = $_SERVER['REMOTE_ADDR'];
+
+            return $message->save();
         }
 
     }
