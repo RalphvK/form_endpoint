@@ -31,7 +31,7 @@
                     'address' => $formCfg['to']['address'],
                     'name' => $formCfg['to']['name']
                 ],
-                'subject' => 'You have a new message from '.$processed['replyTo']['address'],
+                'subject' => 'You have a new message from '.$processed['replyTo']['name'],
                 'html' => $this->generateHTML($processed['data']),
                 'plain' => $this->generatePlain($processed['data']),
                 'smtp' => $formCfg['smtp']
