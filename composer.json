@@ -14,6 +14,7 @@
         "migrate": "php docs/scripts/migrate.php",
         "form": "php docs/scripts/form.php",
         "env": "php docs/scripts/env.php",
-        "debug": "php docs/scripts/debug.php"
+        "debug": "php docs/scripts/debug.php",
+        "user": "php docs/scripts/user.php"
     }
 }

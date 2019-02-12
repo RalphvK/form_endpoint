@@ -34,4 +34,6 @@
     require path::component('notify');
 
     // router
-    require path::app('routes.php');
+    if (!isset($_ENV['cli']) || $_ENV['cli'] !== true) {
+        require path::app('routes.php');
+    }
