@@ -10,7 +10,7 @@
          */
         static public function protect($redirect = true)
         {
-            if (checkSession()) {
+            if (self::loggedIn()) {
                 return true;
             } else {
                 if ($redirect) {
@@ -67,7 +67,7 @@
             session_destroy();
         }
 
-        static public function checkSession()
+        static public function loggedIn()
         {
             if ($_SESSION['loggedIn'] === true) {
                 return true;
