@@ -3,7 +3,7 @@
     use Rakit\Validation\Validator;
     require path::app('controllers/formsController.php');
 
-    class formController {
+    class messageController {
 
         static public function post($request) {
             // get rules from database

@@ -13,8 +13,8 @@
     form endpoint
     */
     $router->respond('POST', '/form/[:form_id]', function ($request) {
-        require path::app('controllers/formController.php');
-        return formController::post($request);
+        require path::app('controllers/messageController.php');
+        return messageController::post($request);
     });
 
     /**
