@@ -29,6 +29,7 @@
     require path::app('helpers/CORS.php');
     require path::app('helpers/includeFolder.php');
     require path::app('helpers/environments.php');
+    require path::app('helpers/redirect.php');
 
     // components
     require path::component('notify');
