@@ -2,6 +2,30 @@
 
     class auth {
 
+        /**
+         * protect a route
+         *
+         * @param boolean $redirect - controls whether to redirect, or to return a json response with status code 403 (used for api routes)
+         * @return boolean returns true when authenticated
+         */
+        static public function protect($redirect = true)
+        {
+            if (checkSession()) {
+                return true;
+            } else {
+                if ($redirect) {
+                    redirect::relative($_ENV['ROUTE_LOGIN']);
+                } else {
+                    http_response_code(403);
+                    echo json_file([
+                        'error' => 'unauthorized',
+                        'error_message' => 'You are not logged in.'
+                    ], 'error');
+                    exit;
+                }
+            }
+        }
+
         static public function checkCredentials($email, $password)
         {
             $user = ORM::for_table('users')->where('email', $email)->find_one();
@@ -41,6 +65,15 @@
         {
             session_unset();
             session_destroy();
+        }
+
+        static public function checkSession()
+        {
+            if ($_SESSION['loggedIn'] === true) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         /**
