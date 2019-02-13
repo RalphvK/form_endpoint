@@ -48,5 +48,40 @@
         return loginController::logout($request);
     });
 
+    /**
+     * Admin Routes
+     */
+
+    /*
+    form CRUD
+    */
+    // index
+    $router->respond('GET', '/admin/forms', function ($request) {
+        require path::bootstrap('admin');
+        auth::protect(false);
+        require path::component('admin', 'controllers/formController.php');
+        return formController::index($request);
+    });
+    // create
+    $router->respond('POST', '/admin/form', function ($request) {
+        require path::bootstrap('admin');
+        auth::protect(false);
+        require path::component('admin', 'controllers/formController.php');
+        return formController::create($request);
+    });
+    // read, update, delete
+    $router->respond('/admin/form/[:public_id]', function ($request) {
+        require path::bootstrap('admin');
+        auth::protect(false);
+        require path::component('admin', 'controllers/formController.php');
+        
+        if ($request->method('GET')) {
+            return formController::read($request);
+        } elseif ($request->method('PUT')) {
+            return formController::update($request);
+        } elseif($request->method('DELETE')) {
+            return formController::delete($request);
+        }
+    });
 
     $router->dispatch();

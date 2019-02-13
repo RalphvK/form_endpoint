@@ -47,6 +47,13 @@
             }
         }
 
+        // admin
+        if (arg_is('admin')) {
+            require path::bootstrap('admin');
+            require path::component('admin', 'formController.php');
+            echo formController::index(null);
+        }
+
     }
 
     echo "\033[0m\n";

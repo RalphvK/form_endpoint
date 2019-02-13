@@ -1,5 +1,4 @@
 <?php
 
-    session_start();
-
     require path::component('auth');
+    require path::component('admin');
