@@ -15,6 +15,16 @@
         }
 
         /**
+         * get path to secondary bootstrap file (ie. bootstrap-admin.php)
+         *
+         * @param string $name - name of bootstrapper without "bootstrap-" prefix
+         * @return string path to file
+         */
+        static public function bootstrap($name) {
+            return self::app('bootstrap-'.$name.'.php');
+        }
+
+        /**
          * set or get openComponent
          *
          * @param string $name

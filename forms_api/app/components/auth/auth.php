@@ -30,7 +30,11 @@
         {
             $user = ORM::for_table('users')->where('email', $email)->find_one();
             if ($user) {
-                return crypto::checkPassword($password, $user->password);
+                if (crypto::checkPassword($password, $user->password)) {
+                    return $user;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }

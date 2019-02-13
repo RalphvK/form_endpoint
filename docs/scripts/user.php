@@ -24,7 +24,7 @@
 
         // register
         if (arg_is('register')) {
-            require path::app('bootstrap-admin.php');
+            require path::bootstrap('admin');
 
             $name = $argv[2];
             $email = $argv[3];
@@ -39,8 +39,9 @@
             }
         }
 
+        // check username + password combination
         if (arg_is('check')) {
-            require path::app('bootstrap-admin.php');
+            require path::bootstrap('admin');
             $email = $argv[2];
             $password = $argv[3];
             if (auth::checkCredentials($email, $password)) {
@@ -52,8 +53,9 @@
             }
         }
 
+        // set new password
         if (arg_is('set_password')) {
-            require path::app('bootstrap-admin.php');
+            require path::bootstrap('admin');
             $email = $argv[2];
             $password = $argv[3];
             function setPassword($email, $password) {                
@@ -73,8 +75,9 @@
             }
         }
 
+        // delete user
         if (arg_is('delete')) {
-            require path::app('bootstrap-admin.php');
+            require path::bootstrap('admin');
             $email = $argv[2];
             $user = ORM::for_table('users')->where('email', $email)->find_one();
             if ($user) {
@@ -85,6 +88,18 @@
                 echo "\033[93m";
                 echo "User not found.";
             }
+        }
+
+        // list users
+        if (arg_is('list')) {
+            $users = ORM::for_table('users')->find_many();
+            foreach ($users as $key => $user) {
+                foreach ($user->as_array() as $column => $value) {
+                    echo $value."\t";
+                }
+                echo "\n";
+            }
+            echo "\n";
         }
 
     }
