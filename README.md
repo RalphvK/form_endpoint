@@ -61,6 +61,35 @@ You can set allowed cross-origins in the ```whitelist``` column. The syntax is a
 https://example.com, https://cors.org
 ```
 
+#### Notification Methods
+
+You can configure how you would like to be notified upon form submission for each form. This is done through json stored in the ```notifiers``` column. You can add new notification methods by creating a new file in the ```forms_api/app/components/notify/notifiers``` folder. All PHP files in this folder are included automatically.
+
+Example configuration for email notifications:
+
+```json
+{
+    "email": {
+        "smtp": {
+            "host": "smtp.example.com",
+            "port": "465",
+            "username": "example",
+            "password": "",
+            "from_address": "noreply@example.com",
+            "from_name": "Form Endpoint"
+        },
+        "to": {
+            "address": "admin@example.com",
+            "name": "Admin"
+        },
+        "replyTo": {
+            "address_field": "email",
+            "name_field": "name"
+        }
+    }
+}
+```
+
 ## Hooking up the form
 
 Once your form is registered, you can send data by sending form data to the following route:
