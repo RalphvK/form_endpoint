@@ -8,6 +8,15 @@ $navbar: (
     width: 100%;
     padding: 0 0;
     background-color: map-get($navbar, 'background-color');
+    position: fixed;
+    z-index: 9;
+}
+
+.navbar-glow {
+    width: 100%;
+    position: fixed;
+    height: 70px;
+    z-index: 1;
 }
 
 .navbar .container {
@@ -39,4 +48,8 @@ $navbar: (
 
     }
     
+}
+
+.content {
+    padding-top: map-get($navbar, 'height');
 }

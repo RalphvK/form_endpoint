@@ -37,6 +37,6 @@ mixins
 :root .card.bg-light { @include glow($black, 0.1); }
 :root .card.light-shadow { @include glow($white, 0.5); }
 
-.navbar {
+.navbar-glow {
     @include glow($primary, $opacity: 0.7, $spread: 100px)
 }

@@ -6176,7 +6176,15 @@ Buttons
 .navbar {
   width: 100%;
   padding: 0 0;
-  background-color: #007bff; }
+  background-color: #007bff;
+  position: fixed;
+  z-index: 9; }
+
+.navbar-glow {
+  width: 100%;
+  position: fixed;
+  height: 70px;
+  z-index: 1; }
 
 .navbar .container {
   width: 100%;
@@ -6203,10 +6211,14 @@ Buttons
       .navbar .container .account-btn button:after {
         margin-left: 15px; }
 
+.content {
+  padding-top: 70px; }
+
 .card {
   border: none;
   padding: 50px 25px;
   margin-bottom: 35px;
+  z-index: 1;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1); }
@@ -6389,7 +6401,7 @@ mixins
   -moz-box-shadow: 0px 5px 20px 0px rgba(255, 255, 255, 0.5);
   box-shadow: 0px 5px 20px 0px rgba(255, 255, 255, 0.5); }
 
-.navbar {
+.navbar-glow {
   -webkit-box-shadow: 0px 5px 100px 0px rgba(0, 123, 255, 0.7);
   -moz-box-shadow: 0px 5px 100px 0px rgba(0, 123, 255, 0.7);
   box-shadow: 0px 5px 100px 0px rgba(0, 123, 255, 0.7); }
@@ -6590,8 +6602,7 @@ body {
 
 .jumbo {
   position: relative;
-  padding: 25px 0;
-  z-index: 9; }
+  padding: 25px 0; }
   .jumbo button {
     font-size: 22px;
     font-weight: 400;
