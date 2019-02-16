@@ -9,6 +9,15 @@
     @include display-text();
 }
 
+@mixin small-title() {
+    font-weight: 600;
+    font-size: 0.9em;
+    letter-spacing: 0.3px;
+}
+.small-title {
+    @include small-title();
+}
+
 @mixin subtitle() {
     font-weight: 600;
     font-size: 0.8em;
@@ -36,8 +45,14 @@ h2 {
 }
 
 @mixin h3() {
-    font-weight: 700;
-    font-size: 2rem;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 45px;
+    .icon {
+        font-size: 35px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
 }
 h3 {
     @include h3();

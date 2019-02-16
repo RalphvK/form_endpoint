@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto+Mono:500" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -37,7 +38,7 @@
 
             <section class="listings">
                 <div class="card">
-                    <div class="title">Litening Newsletter</div>
+                    <div class="small-title">Litening Newsletter</div>
                     <div class="buttons">
                         <a href="#" class="icon-btn">
                             <i class="icon ion-md-create"></i>
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="title">Litening Contact Form</div>
+                    <div class="small-title">Litening Contact Form</div>
                     <div class="buttons">
                         <a href="#" class="icon-btn">
                             <i class="icon ion-md-create"></i>
@@ -53,7 +54,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="title">Netlify Sandbox</div>
+                    <div class="small-title">Netlify Sandbox</div>
                     <div class="buttons">
                         <a href="#" class="icon-btn">
                             <i class="icon ion-md-create"></i>
@@ -61,7 +62,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="title">Litening</div>
+                    <div class="small-title">Litening</div>
                     <div class="buttons">
                         <a href="#" class="icon-btn">
                             <i class="icon ion-md-create"></i>
@@ -103,12 +104,42 @@
             </section>
 
             <section class="edit-code">
-                <form class="card">
-                    <div class="form-group input-material">
-                        <textarea type="text" class="form-control code-field" id="rules-field" name="rules" required></textarea>
-                        <label for="rules-field">Validation Rules</label>
-                    </div>
-                </form>
+                <div class="card code-card">
+                    <h3><i class="icon ion-ios-checkbox"></i> Validation Rules</h3>
+                    <pre id="editor-rules" class="editor">
+{
+    "name": "required|min:2|max:200",
+    "company": "max:200",
+    "email": "required|email",
+    "phone": "max:50",
+    "message": "required|min:10|max:50000"
+}</pre>
+                </div>
+            </section>
+
+            <section class="edit-code">
+                <div class="card code-card">
+                    <h3><i class="icon ion-ios-notifications"></i> Notification Settings</h3>
+                    <pre id="editor-notify" class="editor">
+{
+    "smtp": {
+        "host": "smtp.example.com",
+        "port": "465",
+        "username": "example",
+        "password": "",
+        "from_address": "noreply@example.com",
+        "from_name": "Form Endpoint"
+    },
+    "to": {
+        "address": "admin@example.com",
+        "name": "Admin"
+    },
+    "replyTo": {
+        "address_field": "email",
+        "name_field": "name"
+    }
+}</pre>
+                </div>
             </section>
 
         </div>
@@ -125,6 +156,19 @@
     <script>
         // enable material-style inputs in entire body
         $('body').materializeInputs();
+    </script>
+
+    <!-- ace -->
+    <script src="js/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor_options = {
+            autoScrollEditorIntoView: true,
+            maxLines: 100,
+            theme: "ace/theme/dracula",
+            mode: "ace/mode/json"
+        };
+        var editor_rules = ace.edit("editor-rules", editor_options);
+        var editor_notify = ace.edit("editor-notify", editor_options);
     </script>
 
 </body>

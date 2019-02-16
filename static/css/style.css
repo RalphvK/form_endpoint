@@ -6043,6 +6043,11 @@ a.text-dark:hover, a.text-dark:focus {
   text-transform: uppercase;
   letter-spacing: 2px; }
 
+.small-title {
+  font-weight: 600;
+  font-size: 0.9em;
+  letter-spacing: 0.3px; }
+
 .subtitle {
   font-weight: 600;
   font-size: 0.8em;
@@ -6058,8 +6063,13 @@ h2 {
   font-size: 2.4rem; }
 
 h3 {
-  font-weight: 700;
-  font-size: 2rem; }
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 45px; }
+  h3 .icon {
+    font-size: 35px;
+    margin-right: 10px;
+    vertical-align: middle; }
 
 h6 {
   font-size: inherit;
@@ -6553,6 +6563,28 @@ mixins
   color: #ffffff;
   font-family: monospace; }
 
+.editor {
+  font-size: 1em;
+  line-height: 2em;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  margin: 0 0; }
+
+.card .editor {
+  margin-left: -25px;
+  margin-right: 25px;
+  width: calc(100% + 50px);
+  margin-bottom: -50px; }
+
+.edit-code h3 {
+  text-align: center;
+  opacity: 0.6;
+  font-size: 1.1em;
+  color: #007bff; }
+  .edit-code h3 .icon {
+    font-size: 25px;
+    margin-left: -25px; }
+
 body {
   background-color: #f8f9fa; }
 
@@ -6581,9 +6613,6 @@ body {
     display: flex;
     align-items: center;
     flex-direction: row;
-    font-weight: 600;
-    font-size: 0.9em;
-    letter-spacing: 0.3px;
     padding-top: 10px;
     padding-bottom: 10px; }
     .listings .card .buttons {

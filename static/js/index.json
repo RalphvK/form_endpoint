@@ -1,5 +1,6 @@
 {
     "includes": [
+        "./js/partials/vendor/**/*.js",
         "./js/partials/**/*.js"
     ]
 }

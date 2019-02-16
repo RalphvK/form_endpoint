@@ -7,3 +7,31 @@ $cfg: (
     color: $white;
     font-family: monospace;
 }
+
+.editor {
+    font-size: 1em;
+    line-height: 2em;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    margin: 0 0;
+}
+
+.card .editor {
+    margin-left: -25px;
+    margin-right: 25px;
+    width: calc(100% + 50px);
+    margin-bottom: -50px;
+}
+
+.edit-code {
+    h3 {
+        text-align: center;
+        opacity: 0.6;
+        font-size: 1.1em;
+        color: $primary;
+        .icon {
+            font-size: 25px;
+            margin-left: -25px;
+        }
+    }
+}
