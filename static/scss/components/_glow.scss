@@ -1,7 +1,7 @@
 /*
 mixins
 */
-@mixin glow($color, $opacity: 0.7, $spread: 40px) {
+@mixin glow($color, $opacity: 0.7, $spread: 20px) {
     -webkit-box-shadow: 0px 5px $spread 0px rgba($color,$opacity);
     -moz-box-shadow: 0px 5px $spread 0px rgba($color,$opacity);
     box-shadow: 0px 5px $spread 0px rgba($color,$opacity);
@@ -10,11 +10,11 @@ mixins
 // buttons
 @each $color, $value in $theme-colors {
     :root .btn-#{$color} {
-        @include glow($value);
+        @include glow($value, 0.5);
         transition: all 0.25s;
 
         &:hover {
-        @include glow($value, 0.8, 30px);
+        @include glow($value, 0.6, 30px);
         }
     }
 }
