@@ -1,0 +1,42 @@
+/*
+mixins
+*/
+@mixin glow($color, $opacity: 0.7, $spread: 40px) {
+    -webkit-box-shadow: 0px 5px $spread 0px rgba($color,$opacity);
+    -moz-box-shadow: 0px 5px $spread 0px rgba($color,$opacity);
+    box-shadow: 0px 5px $spread 0px rgba($color,$opacity);
+}
+
+// buttons
+@each $color, $value in $theme-colors {
+    :root .btn-#{$color} {
+        @include glow($value);
+        transition: all 0.25s;
+
+        &:hover {
+        @include glow($value, 0.8, 30px);
+        }
+    }
+}
+
+// outline
+@each $color, $value in $theme-colors {
+    :root .btn-outline-#{$color}:hover {
+        @include glow($value, 0.2);
+    }
+}
+
+// cards
+@each $color, $value in $theme-colors {
+    :root .card.bg-#{$color} {
+      @include glow($value);
+    }
+  }
+
+:root .card { @include glow($primary, 0.05); }
+:root .card.bg-light { @include glow($black, 0.1); }
+:root .card.light-shadow { @include glow($white, 0.5); }
+
+.navbar {
+    @include glow($primary, $opacity: 0.7, $spread: 100px)
+}

@@ -1,3 +1,19 @@
 //
 // override additional Bootstrap variables in this file
 //
+$input-btn-padding-y:         0.6rem;
+$input-btn-padding-x:         2.2rem;
+
+$input-btn-padding-y-sm:      .3rem;
+$input-btn-padding-x-sm:      1rem;
+
+$input-btn-padding-y-lg:      0.7rem;
+$input-btn-padding-x-lg:      3.4rem;
+
+$btn-font-weight: 600;
+
+$btn-border-radius:           99px;
+$btn-border-radius-lg:        $btn-border-radius;
+$btn-border-radius-sm:        $btn-border-radius;
+
+$btn-border-width: 2px;

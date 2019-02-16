@@ -1,0 +1,55 @@
+$gradient-primary: generate-gradient($primary);
+
+@mixin gradient-primary-muted() {
+    // fallback
+    background: $primary;
+    background: $gradient-primary;
+}
+
+@mixin generate-gradient($color, $saturate: 4%, $lighten: 7%, $hue: 20%) {
+    // fallback
+    background: $color;
+    background: linear-gradient(90deg, $color 0%, saturate(lighten(adjust-hue( $color, $hue), $lighten), $saturate) 100%);
+}
+
+  /*
+  Backgrounds
+  */
+  
+  @each $color, $value in $theme-colors {
+    :root .bg-#{$color} {
+      @include generate-gradient($value);
+    }
+  }
+  
+  :root .bg-primary {
+    // @include generate-gradient(lighten(adjust-hue($primary, 10%), 5%), 2%, 8%, -15%);
+    @include gradient-primary-muted;
+  }
+  :root .bg-primary-muted {
+    @include gradient-primary-muted;
+  }
+  :root .bg-light {
+    background: linear-gradient(90deg, $white 0%, darken($light, 2%) 100%);
+  }
+
+// buttons
+@each $color, $value in $theme-colors {
+    :root .btn-#{$color} {
+        @include generate-gradient($value);
+        border: none;
+
+        &:hover {
+        @include generate-gradient(darken($value, 10%));
+        }
+    }
+}
+
+// progress bar
+.progress-bar {
+    @include generate-gradient($primary);
+}
+
+.navbar {
+    @include generate-gradient($primary);
+}

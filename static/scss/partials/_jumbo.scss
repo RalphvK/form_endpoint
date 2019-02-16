@@ -1,0 +1,28 @@
+.jumbo {
+
+    position: relative;
+    padding: 25px 0;
+    z-index: 9;
+
+    button {
+        font-size: 22px;
+        font-weight: 400;
+        background: transparent;
+        border: none;
+        color: $primary;
+        cursor: pointer;
+        transition: transform 0.25s ease;
+
+        .icon {
+            font-size: 35px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        &:hover {
+            transform: translateX(10px);
+        }
+
+    }
+
+}
