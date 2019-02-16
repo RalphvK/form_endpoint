@@ -6195,7 +6195,7 @@ Buttons
 
 .card {
   border: none;
-  padding: 25px;
+  padding: 50px 25px;
   margin-bottom: 35px;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
@@ -6502,6 +6502,57 @@ mixins
   background: #007bff;
   background: linear-gradient(90deg, #007bff 0%, #2444ff 100%); }
 
+.form-group.input-material {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 40px; }
+  .form-group.input-material label {
+    color: #b1bbc4;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 7px;
+    transition: 0.1s ease all;
+    -moz-transition: 0.1s ease all;
+    -webkit-transition: 0.1s ease all; }
+  .form-group.input-material .form-control {
+    border: none;
+    border-bottom: 2px solid #ced4da;
+    border-radius: 0px;
+    background: transparent;
+    padding-left: 5px;
+    box-shadow: none;
+    /* active state */
+    /* invalid state */ }
+    .form-group.input-material .form-control:focus, .form-group.input-material .form-control[value]:not([value=""]) {
+      border-bottom-color: #007bff;
+      color: #000; }
+    .form-group.input-material .form-control:focus ~ label,
+    .form-group.input-material .form-control[value]:not([value=""]) ~ label {
+      top: -25px;
+      font-size: 14px;
+      color: #007bff;
+      font-weight: 500; }
+    .form-group.input-material .form-control:focus.invalid, .form-group.input-material .form-control.invalid, .form-group.input-material .form-control:focus.parsley-error, .form-group.input-material .form-control[value]:not([value=""]).parsley-error {
+      border-bottom-color: #dc3545; }
+    .form-group.input-material .form-control:focus.invalid ~ label,
+    .form-group.input-material .form-control.invalid ~ label,
+    .form-group.input-material .form-control:focus.parsley-error ~ label,
+    .form-group.input-material .form-control[value]:not([value=""]).parsley-error ~ label {
+      color: #dc3545; }
+  .form-group.input-material .parsley-errors-list {
+    color: #dc3545;
+    list-style: none;
+    font-size: 0.7em;
+    padding-left: 5px; }
+
+.form-group .form-control.code-field, .form-group.input-material .form-control.code-field:focus, .form-group.input-material .form-control.code-field[value]:not([value=""]) {
+  background-color: #003166;
+  color: #ffffff;
+  font-family: monospace; }
+
 body {
   background-color: #f8f9fa; }
 
@@ -6524,25 +6575,40 @@ body {
     .jumbo button:hover {
       transform: translateX(10px); }
 
-.listings .card {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  padding-top: 10px;
-  padding-bottom: 10px; }
-  .listings .card .buttons {
-    margin-left: auto; }
-    .listings .card .buttons .icon-btn {
-      display: block;
-      border: none;
-      font-size: 20px;
-      padding: 10px 25px;
-      margin-right: -15px; }
+.listings {
+  padding-top: 35px; }
+  .listings .card {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    .listings .card .buttons {
+      margin-left: auto; }
+      .listings .card .buttons .icon-btn {
+        display: block;
+        border: none;
+        font-size: 20px;
+        padding: 10px 25px;
+        margin-right: -15px; }
 
 .create-section {
   text-align: center;
   padding-top: 25px; }
+  .create-section .card {
+    margin-top: 35px; }
+    .create-section .card button {
+      margin: 0 auto;
+      margin-left: 0; }
+
+.edit-meta .card button {
+  margin: 0 auto;
+  margin-left: 0; }
+
+.edit-meta .card button {
+  margin: 0 auto;
+  margin-left: 0; }
 
 /*# sourceMappingURL=style.css.map */

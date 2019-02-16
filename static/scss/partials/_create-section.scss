@@ -1,4 +1,13 @@
 .create-section {
     text-align: center;
     padding-top: 25px;
+
+    .card {
+        margin-top: 35px;
+        button {
+            margin: 0 auto;
+            margin-left: 0;
+        }
+    }
+
 }

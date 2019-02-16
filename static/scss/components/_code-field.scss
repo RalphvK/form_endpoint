@@ -1,0 +1,9 @@
+$cfg: (
+    'background-color': darken($primary, 30%)
+);
+
+.form-group .form-control.code-field, .form-group.input-material .form-control.code-field:focus, .form-group.input-material .form-control.code-field[value]:not([value=""]) {
+    background-color: map-get($cfg, 'background-color');
+    color: $white;
+    font-family: monospace;
+}
