@@ -1,0 +1,64 @@
+$cfg: (
+    'row-margin': 100px,
+    'color': $secondary,
+    'menu-color': $primary,
+    'background': $body-color
+);
+
+footer {
+
+    background-color: map-get($cfg, 'background');
+    margin-top: map-get($cfg, 'row-margin');
+
+    .footer-bar {
+        @extend .display-text;
+        background: map-get($cfg, 'background');
+        line-height: 70px;
+        color: map-get($cfg, 'color');
+        font-size: 0.7em;
+
+        .footer-logo {
+            a img {
+                height: 35px;
+            }
+        }
+        
+        .copyright {
+            text-align: center;
+        }
+
+        .footer-menu {
+            text-align: right;
+        }
+
+        .menu {
+            li a {
+                color: map-get($cfg, 'menu-color');
+                height: 70px;
+                font-size: 0.9em;
+
+                &:hover, &.active {
+                    @include navbar_underline_border($color: map-get($cfg, 'menu-color'));
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+
+}
+
+@include media-breakpoint-down(sm) {
+
+    .section.footer-section {
+        .footer-bar {
+            padding-top: 20px;
+            .footer-logo, .copyright, .footer-menu {
+                text-align: center;
+            }
+            .menu {
+                padding-left: 0;
+            }
+        }
+    }
+
+}

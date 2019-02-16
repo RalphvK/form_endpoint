@@ -1,0 +1,209 @@
+$nav-item: (
+    'padding-x': 60px,
+    'padding-y': 0px,
+    'border-radius': 5px,
+    'color': $black,
+    'inverse-color': $gray-400
+);
+
+$logo: (
+    'height': 45px,
+    'padding': 0 10px 0 0
+);
+
+@mixin navbar_underline(){
+    text-decoration: underline;
+}
+
+@mixin navbar_underline_border(
+    $color: map-get($nav-item, 'color'),
+    $thickness: 2px,
+    ){
+
+    &:hover, &.active {
+        text-decoration: none;
+        position: relative;
+        background-color: transparent;
+        
+        &:after {
+            content: '';
+            width: calc(100% - #{map-get($nav-item, 'padding-x')});
+            position: absolute;
+            left: map-get($nav-item, 'padding-x') * 0.5;
+            bottom: 0px;
+            border-bottom: $thickness solid $color;
+        }
+    }
+
+}
+
+@mixin navbar_underline_inset(
+    $color: map-get($nav-item, 'color'),
+    $thickness: 2px,
+    ){
+
+    &:hover, &.active {
+        text-decoration: none;
+        position: relative;
+        background-color: transparent;
+        
+        &:after {
+            content: '';
+            width: calc(100% - #{map-get($nav-item, 'padding-x') * 2});
+            position: absolute;
+            left: map-get($nav-item, 'padding-x');
+            bottom: 0px;
+            border-top: $thickness solid $color;
+        }
+    }
+
+}
+
+@mixin navbar_button(
+    $background-color: $primary,
+    $hover-color: $white,
+    $padding: 0px 30px
+){
+    padding: $padding;
+    transition: all 0.25s ease;
+
+    &:hover, &.active {
+        text-decoration: none;
+        background-color: rgba($background-color, 0.5);
+        padding: $padding;
+        color: $hover-color;
+    }
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    line-height: 70px;
+    align-items: center;
+    padding: 40px 0px 30px 0px;
+
+    .logo {
+        padding: map-get($logo, 'padding');
+        height: map-get($logo, 'height');
+        display: inline-block;
+
+        .cls-primary {
+            fill: map-get($nav-item, 'color');
+            transition: fill 0.5s ease;
+        }
+    }
+    
+}
+
+ul.menu {
+    margin-left: auto;
+    margin-bottom: 0;
+    
+    li {
+        display: inline-block;
+        list-style: none;
+
+        a {
+            display: block;
+            padding: map-get($nav-item, 'padding-y') map-get($nav-item, 'padding-x');
+            font-weight: 600;
+            color: map-get($nav-item, 'color');
+            text-transform: uppercase;
+            font-size: 0.75em;
+            letter-spacing: 1px;
+            border-radius: map-get($nav-item, 'border-radius');
+            @include smooth();
+            
+            @include navbar_button();
+        }
+        
+        &.lang-item {
+            display: none;
+            height: 10px;
+            &:hover {
+                background: none;
+            }
+            img {
+                height: 20px;
+                opacity: 0.9;
+                transition: all 0.5s ease;
+                &:hover {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+            }
+        }
+
+    }
+}
+
+button.hamburger {
+    display: none;
+}
+
+.inverse {
+    .navbar {
+        .logo {
+            .cls-primary {
+                fill: map-get($nav-item, 'inverse-color');;
+            }
+        }
+    }
+
+    ul.menu {
+        
+        li {
+
+            a {
+                color: map-get($nav-item, 'inverse-color');
+                
+                &:hover, &.active {
+                    &:after {
+                        border-bottom-color: map-get($nav-item, 'inverse-color');
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+// tabbed menu
+@include media-breakpoint-down(sm) {
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+
+        padding-bottom: 0px;
+        margin-bottom: 100px;
+        background-color: $white;
+        border-bottom: 1px solid $gray-400;
+
+        .logo {
+            padding: 0 0 0 0;
+            margin-bottom: 10px;
+        }
+
+        ul.menu {
+            padding-left: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            li a {
+                padding-left: map-get($nav-item, 'padding-x');
+                padding-right: map-get($nav-item, 'padding-x');
+                
+                &:after {
+                    width: 100%;
+                    left: 0px;
+                }
+            }
+        }
+    }
+
+}

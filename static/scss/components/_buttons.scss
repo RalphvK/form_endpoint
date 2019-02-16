@@ -1,0 +1,52 @@
+/*
+Buttons
+*/
+$input-btn-padding-y:         0.6rem;
+$input-btn-padding-x:         2.2rem;
+
+$input-btn-padding-y-sm:      .3rem;
+$input-btn-padding-x-sm:      1rem;
+
+$input-btn-padding-y-lg:      0.7rem;
+$input-btn-padding-x-lg:      3.4rem;
+
+$btn-font-weight: 600;
+
+$btn-border-radius:           2px;
+$btn-border-radius-lg:        $btn-border-radius;
+$btn-border-radius-sm:        $btn-border-radius;
+
+$btn-border-width: 2px;
+
+:root .btn {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7em;
+    padding: $input-btn-padding-y $input-btn-padding-x;
+}
+
+:root .btn-lg {
+    font-size: 0.9em;
+    padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
+}
+
+:root .btn-sm {
+    font-size: 0.6em;
+    padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+}
+
+// outline
+@each $color, $value in $theme-colors {
+    :root .btn-outline-#{$color} {
+        border-width: $btn-border-width;
+        &:hover {
+            color: $white;
+            background: $value;
+        }
+    }
+}
+
+.btn {
+    @extend .display-text;
+    font-size: 0.7em;
+}

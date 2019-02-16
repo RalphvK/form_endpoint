@@ -1,0 +1,80 @@
+@mixin display-text($uppercase: true) {
+    font-weight: 600;
+    @if($uppercase) {
+        text-transform: uppercase;
+    }
+    letter-spacing: 2px;
+}
+.display-text {
+    @include display-text();
+}
+
+@mixin subtitle() {
+    font-weight: 600;
+    font-size: 0.8em;
+    letter-spacing: 0.5px;
+    line-height: 2em;
+}
+.subtitle {
+    @include subtitle();
+}
+
+@mixin title-block() {
+    display: block;
+    text-align: center;
+}
+.title-block {
+    @include title-block();
+}
+
+@mixin h2() {
+    font-weight: 700;
+    font-size: 2.4rem;
+}
+h2 {
+    @include h2();
+}
+
+@mixin h3() {
+    font-weight: 700;
+    font-size: 2rem;
+}
+h3 {
+    @include h3();
+}
+
+@mixin h6() {
+    font-size: inherit;
+    font-weight: bolder;
+    margin: 0 0;
+    padding: 0 0;
+}
+h6 {
+    @include h6();
+}
+
+@mixin hr() {
+    margin: 40px auto;
+}
+hr {
+    @include hr();
+}
+
+@mixin p() {
+    line-height: 2em;
+    font-size: 0.9em;
+}
+p {
+    @include p();
+}
+@mixin smooth() {
+    /* Smoothing */
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+}
+.smooth {
+    @include smooth();
+}
