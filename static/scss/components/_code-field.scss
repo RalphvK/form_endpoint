@@ -21,14 +21,21 @@ $cfg: (
     margin-right: 25px;
     width: calc(100% + 50px);
     margin-bottom: -50px;
+    @include generate-gradient(#282a36);
+}
+
+.card.code-card {
+    @include generate-gradient(lighten(#282a36, 2%));
+    @include glow(#17246e);
+    overflow: hidden;
 }
 
 .edit-code {
     h3 {
         text-align: center;
-        opacity: 0.6;
+        opacity: 0.8;
         font-size: 1.1em;
-        color: $primary;
+        color: $white;
         .icon {
             font-size: 25px;
             margin-left: -25px;
