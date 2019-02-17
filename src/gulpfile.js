@@ -10,9 +10,9 @@ var sourcemaps = require('gulp-sourcemaps');
 
 var path = {
     scss: './scss/style.scss',
-    css: './css',
+    css: './../public/css',
     js_src: './scripts.js',
-    js: './js/'
+    js: './../public/js/'
 };
 
 // scss
@@ -55,5 +55,8 @@ gulp.task('watch', function () {
     gulp.watch('./js/index.json', gulp.series('concat_js'));
     gulp.watch('./scss/**/*.scss', gulp.series('scss', 'scss-minify'));
 });
+
+// manual build
+gulp.task('compile', gulp.series('concat_js', 'scss', 'scss-minify'));
 
 gulp.task('default', gulp.series('watch', 'concat_js', 'scss', 'scss-minify'));
