@@ -52,6 +52,23 @@
                 </div>
             </section>
 
+            <section class="edit-meta">
+                <div class="card">
+                    <button type="button" class="btn btn-outline-danger icon-padding" data-toggle="collapse" data-target="#delete-form-collapse">
+                        <i class="icon ion-ios-nuclear icon-md"></i> Delete Permanently
+                    </button>
+                    <div id="delete-form-collapse" class="collapse">
+                        <div class="alert alert-danger mt-3" role="alert">
+                            Are you sure you want to delete this form? This action cannot be undone!
+                            <form class="delete-button" action="/admin/form/<?= $this->escape($this->form->public_id); ?>" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="submit" class="btn btn-outline-danger icon-padding ml-5" value="Yes, delete forever">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <?php } else { // if not object ?>
                 <div class="jumbotron text-center mt-5">
                     <h3><?= $this->escape($this->form); ?></h3>

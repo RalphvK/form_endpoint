@@ -45,7 +45,9 @@
 
         static public function delete($request)
         {
-            // delete form
+            $form = ORM::for_table('forms')->where('public_id', $request->public_id)->find_one();
+            $form->delete();
+            redirect::relative('/admin');
         }
 
     }

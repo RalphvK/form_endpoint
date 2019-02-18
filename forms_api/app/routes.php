@@ -79,14 +79,22 @@
         require path::bootstrap('admin');
         auth::protect(false);
         require path::component('admin', 'controllers/formController.php');
-        
-        if ($request->method('GET')) {
+
+        // determine method
+        if (isset($_POST['_method'])) {
+            $method = $_POST['_method'];
+        } else {
+            $method = $request->method();
+        }
+
+        if ($method == 'GET') {
             return formController::read($request, $response, $serivce);
-        } elseif ($request->method('PUT')) {
+        } elseif ($method == 'PUT') {
             return formController::update($request);
-        } elseif($request->method('DELETE')) {
+        } elseif($method == 'DELETE') {
             return formController::delete($request);
         }
+    
     });
 
     $router->dispatch();
