@@ -17,7 +17,7 @@
         }
 
         static public function insert($fields = []) {
-            $defaults = ["validation_rules" => [], "whitelist" => ""];
+            $defaults = ["validation_rules" => "{}", "whitelist" => "", "notifiers" => "{}"];
             $fields = array_merge($defaults, $fields);
             // generate id
             $public_id = generate::form_id();
@@ -33,9 +33,11 @@
             $form = ORM::for_table('forms')->create();
             $form->public_id = $public_id;
             $form->name = $fields['name'];
-            $form->validation_rules = json_encode($fields['validation_rules']);
+            $form->validation_rules = $fields['validation_rules'];
             $form->whitelist = $fields['whitelist'];
-            return $form->save();
+            $form->notifiers = $fields['notifiers'];
+            $form->save();
+            return $form;
         }
 
     }

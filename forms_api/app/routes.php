@@ -70,6 +70,7 @@
     $router->respond('POST', '/admin/form', function ($request) {
         require path::bootstrap('admin');
         auth::protect(false);
+        require path::app('controllers/formsController.php');
         require path::component('admin', 'controllers/formController.php');
         return formController::create($request);
     });

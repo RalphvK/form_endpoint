@@ -17,7 +17,10 @@
 
         static public function create($request)
         {
-            // create new form
+            $insert = formsController::insert([
+                'name' => filter_var($_POST['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS)
+            ]);
+            redirect::relative('/admin/form/'.$insert->public_id);
         }
 
         static public function read($request, $response, $service)
