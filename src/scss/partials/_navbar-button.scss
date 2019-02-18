@@ -1,0 +1,11 @@
+.navbar-button {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: display 0s, opacity 0.5s ease;
+
+    &.visible {
+        height: auto;
+        opacity: 1;
+    }
+}

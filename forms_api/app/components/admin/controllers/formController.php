@@ -35,12 +35,29 @@
             }
             // render view
             $service->form = $form;
+            $service->navbarButton = new stdClass();
+            $service->navbarButton->text = "Save";
+            $service->navbarButton->icon = "ion-ios-save";
+            $service->navbarButton->class = "btn-danger";
+            $service->navbarButton->action = "javascript:;";
+            $service->navbarButton->method = "PUT";
+            $service->navbarButton->onsubmit = "submitEditForm('/admin/form/$form->public_id')";
             $service->render(path::component('admin', 'views/read.php'));
         }
 
         static public function update($request)
         {
-            // edit form
+            $form = ORM::for_table('forms')->where('public_id', $request->public_id)->find_one();
+            // generic insert
+            foreach ($_POST as $key => $value) {
+                $form->$key = $value;
+            }
+            // override with sanitized vars
+            $form->name = filter_var($_POST['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            // push changes
+            $form->save();
+            // return success
+            return json_file([], 'success');
         }
 
         static public function delete($request)

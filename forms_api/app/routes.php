@@ -83,6 +83,7 @@
         // determine method
         if (isset($_POST['_method'])) {
             $method = $_POST['_method'];
+            unset($_POST['_method']);
         } else {
             $method = $request->method();
         }

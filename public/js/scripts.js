@@ -159,3 +159,23 @@ $.fn.materializeInputs = function(selectors) {
 $(document.body).buttonClass('.group-disabled input', function () {
     $(this).select();
 });
+$(document).on('keydown', 'input, textarea', function () {
+    $('.navbar-button').addClass('visible');
+});
+function submitEditForm(url) {
+    var data = {
+        _method: 'PUT',
+        name: $('#name-field').val(),
+        whitelist: $('#whitelist-field').val(),
+        validation_rules: window.editor_rules.getValue(),
+        notifiers: window.editor_notify.getValue()
+    };
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: data,
+        success: function (result) {
+            location.reload();
+        }
+    });
+}

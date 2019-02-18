@@ -6672,4 +6672,13 @@ body {
   margin: 0 auto;
   margin-left: 0; }
 
+.navbar-button {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: display 0s, opacity 0.5s ease; }
+  .navbar-button.visible {
+    height: auto;
+    opacity: 1; }
+
 /*# sourceMappingURL=style.css.map */
