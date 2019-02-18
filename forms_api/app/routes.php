@@ -75,7 +75,7 @@
     // index
     $router->respond('GET', '/admin', function (...$args) {
         require path::bootstrap('admin');
-        auth::protect(false);
+        auth::protect();
         require path::component('admin', 'controllers/formController.php');
         return formController::index(...$args);
     });
@@ -90,7 +90,7 @@
     // read, update, delete
     $router->respond('/admin/form/[:public_id]', function ($request, $response, $serivce) {
         require path::bootstrap('admin');
-        auth::protect(false);
+        auth::protect();
         require path::component('admin', 'controllers/formController.php');
 
         // determine method
