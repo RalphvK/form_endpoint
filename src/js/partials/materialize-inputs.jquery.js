@@ -18,3 +18,7 @@ $.fn.materializeInputs = function(selectors) {
         setInputValueAttr(this);
     });
 };
+
+$(document.body).buttonClass('.group-disabled input', function () {
+    $(this).select();
+});

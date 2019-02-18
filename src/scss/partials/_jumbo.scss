@@ -3,7 +3,8 @@
     position: relative;
     padding: 25px 0;
 
-    button {
+    button, a {
+        display: inline-block;
         font-size: 22px;
         font-weight: 400;
         background: transparent;
@@ -19,6 +20,7 @@
         }
 
         &:hover {
+            text-decoration: none;
             transform: translateX(10px);
         }
 

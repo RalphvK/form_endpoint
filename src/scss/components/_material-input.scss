@@ -70,5 +70,9 @@
         font-size: 0.7em;
         padding-left: 5px;
     }
+
+    &.group-disabled {
+        opacity: 0.5;
+    }
     
 }

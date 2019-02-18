@@ -74,13 +74,13 @@
         return formController::create($request);
     });
     // read, update, delete
-    $router->respond('/admin/form/[:public_id]', function ($request) {
+    $router->respond('/admin/form/[:public_id]', function ($request, $response, $serivce) {
         require path::bootstrap('admin');
         auth::protect(false);
         require path::component('admin', 'controllers/formController.php');
         
         if ($request->method('GET')) {
-            return formController::read($request);
+            return formController::read($request, $response, $serivce);
         } elseif ($request->method('PUT')) {
             return formController::update($request);
         } elseif($request->method('DELETE')) {

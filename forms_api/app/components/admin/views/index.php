@@ -9,7 +9,7 @@
                         <div class="text-muted form-id"><?= $this->escape($form->public_id); ?></div>
                     </div>
                     <div class="buttons">
-                        <a href="/form/<?= $this->escape($form->public_id); ?>" class="icon-btn" data-toggle="tooltip" data-placement="left" title="Edit Form">
+                        <a href="/admin/form/<?= $this->escape($form->public_id); ?>" class="icon-btn" data-toggle="tooltip" data-placement="left" title="Edit Form">
                             <i class="icon ion-md-create"></i>
                         </a>
                     </div>

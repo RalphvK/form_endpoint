@@ -20,9 +20,19 @@
             // create new form
         }
 
-        static public function read($request)
+        static public function read($request, $response, $service)
         {
-            // get single form
+            $form = ORM::for_table('forms')->where('public_id', $request->public_id)->find_one();
+            if ($form) {
+                // pretty print json
+                $form->validation_rules = prettify_json($form->validation_rules);
+                $form->notifiers = prettify_json($form->notifiers);
+            } else {
+                $form = 'Form not found.';
+            }
+            // render view
+            $service->form = $form;
+            $service->render(path::component('admin', 'views/read.php'));
         }
 
         static public function update($request)
