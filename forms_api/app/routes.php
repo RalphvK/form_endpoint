@@ -52,15 +52,19 @@
      * Admin Routes
      */
 
+    $router->respond(function ($request, $response, $service) {
+        $service->layout(path::component('admin', 'layouts/admin.php'));
+    });
+
     /*
     form CRUD
     */
     // index
-    $router->respond('GET', '/admin/forms', function ($request) {
+    $router->respond('GET', '/admin', function (...$args) {
         require path::bootstrap('admin');
         auth::protect(false);
         require path::component('admin', 'controllers/formController.php');
-        return formController::index($request);
+        return formController::index(...$args);
     });
     // create
     $router->respond('POST', '/admin/form', function ($request) {

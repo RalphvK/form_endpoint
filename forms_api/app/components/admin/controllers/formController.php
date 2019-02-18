@@ -2,21 +2,17 @@
 
     class formController {
 
-        static public function index($request)
+        static public function index($request, $response, $service)
         {
             $forms = ORM::for_table('forms')->find_many();
             if ($forms) {
-                $output = [];
-                foreach ($forms as $key => $form) {
-                    $output[] = $form->as_array();
-                }
-                return json_file($output);
+                $output = $forms;
             } else {
-                return json_file([
-                    'error' => 'not_found',
-                    'error_message' => 'No forms were found.'
-                ], 'error');
+                $output = 'No forms found.';
             }
+            // render view
+            $service->forms = $output;
+            $service->render(path::component('admin', 'views/index.php'));
         }
 
         static public function create($request)
