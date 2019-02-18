@@ -6634,8 +6634,11 @@ body {
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding-top: 10px;
-    padding-bottom: 10px; }
+    padding-top: 15px;
+    padding-bottom: 15px; }
+    .listings .card .form-id {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px; }
     .listings .card .buttons {
       margin-left: auto; }
       .listings .card .buttons .icon-btn {

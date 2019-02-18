@@ -10,8 +10,13 @@ $cfg: (
         display: flex;
         align-items: center;
         flex-direction: row;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        .form-id {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+        }
 
         .buttons {
             margin-left: auto;
