@@ -34,6 +34,7 @@
         public static function logout($request)
         {
             auth::logoutSession();
+            return redirect::relative('/login');
         }
 
     }

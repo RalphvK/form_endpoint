@@ -53,14 +53,14 @@
         &.invalid,
         &:focus.parsley-error,
         &[value]:not([value=""]).parsley-error {
-            border-bottom-color: $danger;
+            border-bottom-color: $danger !important;
         }
         
         &:focus.invalid ~ label,
         &.invalid ~ label,
         &:focus.parsley-error ~ label,
         &[value]:not([value=""]).parsley-error ~ label {
-            color: $danger;
+            color: $danger !important;
         }
     }
   

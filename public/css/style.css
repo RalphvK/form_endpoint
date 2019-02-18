@@ -6561,12 +6561,12 @@ mixins
       color: #007bff;
       font-weight: 500; }
     .form-group.input-material .form-control:focus.invalid, .form-group.input-material .form-control.invalid, .form-group.input-material .form-control:focus.parsley-error, .form-group.input-material .form-control[value]:not([value=""]).parsley-error {
-      border-bottom-color: #dc3545; }
+      border-bottom-color: #dc3545 !important; }
     .form-group.input-material .form-control:focus.invalid ~ label,
     .form-group.input-material .form-control.invalid ~ label,
     .form-group.input-material .form-control:focus.parsley-error ~ label,
     .form-group.input-material .form-control[value]:not([value=""]).parsley-error ~ label {
-      color: #dc3545; }
+      color: #dc3545 !important; }
   .form-group.input-material .parsley-errors-list {
     color: #dc3545;
     list-style: none;

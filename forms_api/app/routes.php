@@ -42,7 +42,7 @@
     /*
     logout
     */
-    $router->respond('POST', '/auth/logout', function ($request) {
+    $router->respond(['POST', 'GET'], '/auth/logout', function ($request) {
         require path::bootstrap('admin');
         require path::component('auth', 'controllers/loginController.php');
         return loginController::logout($request);
@@ -52,13 +52,26 @@
      * Admin Routes
      */
 
-    $router->respond(function ($request, $response, $service) {
-        $service->layout(path::component('admin', 'layouts/admin.php'));
+     
+    /**
+     * Authentication Interface Routes
+     */
+    $router->respond('GET', '/login', function ($request, $response, $service) {
+        require path::bootstrap('admin');
+        $service->layout(path::component('auth', 'layouts/login.php'));
+        if (auth::loggedIn()) {
+            redirect::relative('/admin');
+        } else {
+            return $service->render(path::component('auth', 'views/login.php'));
+        }
     });
 
     /*
     form CRUD
     */
+    $router->respond(function ($request, $response, $service) {
+        $service->layout(path::component('admin', 'layouts/admin.php'));
+    });
     // index
     $router->respond('GET', '/admin', function (...$args) {
         require path::bootstrap('admin');
