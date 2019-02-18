@@ -27,7 +27,7 @@
                         <?= $_SESSION['name']; ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="/auth/logout">Logout</a>
                     </div>
                 </div>
             </div>
