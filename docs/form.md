@@ -3,15 +3,10 @@
 #### Create new form entry
 
 Register a new form by running the ```form``` command. This command will create a new form entry in the database with a randomly generated public ID. The command will return this ID in the output.
+You can define a form name in the first argument after the ```form``` command.
 
 ```bash
-composer form
-```
-
-Optionally, the command accepts a comma delimited string as a parameter which will server as the whitelist for allowed CORS origins. If no parameters is provided, you will have to set origins later when editing the database record.
-
-```bash
-composer form "https://example.com"
+composer form "your-form-name"
 ```
 
 #### Set field validation rules

@@ -25,9 +25,14 @@
             while (ORM::for_table('forms')->where('public_id', $public_id)->count() > 0) {
                 $public_id = generate::form_id();
             }
+            // check if name is set
+            if (!isset($fields['name'])) {
+                $fields['name'] = $public_id;
+            }
             // insert new record
             $form = ORM::for_table('forms')->create();
             $form->public_id = $public_id;
+            $form->name = $fields['name'];
             $form->validation_rules = json_encode($fields['validation_rules']);
             $form->whitelist = $fields['whitelist'];
             return $form->save();
