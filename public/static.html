@@ -17,7 +17,9 @@
         <!-- navbar -->
         <div id="main-nav" class="navbar">
             <div class="container">
-                <button type="button" class="btn btn-danger icon-padding"><i class="icon ion-ios-save icon-md"></i> Save</button>
+                <div class="navbar-button" data-var="navbar-button">
+                    <button type="button" class="btn btn-danger icon-padding"><i class="icon ion-ios-save icon-md"></i> Save</button>
+                </div>
                 <div class="dropdown account-btn">
                     <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -35,9 +37,9 @@
 
     <div class="content">
 
-        <div class="container">
+        <div class="container" data-var="view-container">
 
-            <section class="listings">
+            <section class="listings" data-var="form-index">
                 <div class="card">
                     <div class="small-title">Litening Newsletter</div>
                     <div class="buttons">
@@ -155,21 +157,27 @@
     <script src="js/scripts.min.js"></script>
 
     <script>
-        // enable material-style inputs in entire body
-        $('body').materializeInputs();
+        $(document).ready(function() {
+            // enable material-style inputs in entire body
+            $('body').materializeInputs();
+            // init varset
+            var varset = new Varset();
+        });
     </script>
 
     <!-- ace -->
     <script src="js/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        var editor_options = {
-            autoScrollEditorIntoView: true,
-            maxLines: 100,
-            theme: "ace/theme/dracula",
-            mode: "ace/mode/json"
-        };
-        var editor_rules = ace.edit("editor-rules", editor_options);
-        var editor_notify = ace.edit("editor-notify", editor_options);
+        $(document).ready(function () {
+            var editor_options = {
+                autoScrollEditorIntoView: true,
+                maxLines: 100,
+                theme: "ace/theme/dracula",
+                mode: "ace/mode/json"
+            };
+            var editor_rules = ace.edit("editor-rules", editor_options);
+            var editor_notify = ace.edit("editor-notify", editor_options);
+        });
     </script>
 
 </body>
