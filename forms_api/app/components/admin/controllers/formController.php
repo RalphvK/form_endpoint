@@ -12,6 +12,7 @@
             }
             // render view
             $service->forms = $output;
+            $service->title = 'Form Endpoints';
             $service->render(path::component('admin', 'views/index.php'));
         }
 
@@ -42,6 +43,7 @@
             $service->navbarButton->action = "javascript:;";
             $service->navbarButton->method = "PUT";
             $service->navbarButton->onsubmit = "submitEditForm('/admin/form/$form->public_id')";
+            $service->title = 'Edit Form';
             $service->render(path::component('admin', 'views/read.php'));
         }
 
