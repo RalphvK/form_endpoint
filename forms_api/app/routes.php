@@ -6,7 +6,12 @@
     home
     */
     $router->respond('GET', '/', function ($request) {
-        require path::app('views/index.php');
+        require path::bootstrap('admin');
+        if (auth::loggedIn()) {
+            redirect::relative('/admin');
+        } else {
+            redirect::relative('/login');
+        }
     });
 
     /*
