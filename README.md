@@ -20,27 +20,59 @@ When you have these fulfilled these requirements, you can install the project in
 
 3. Finally, prepare the database tables by running ```composer migrate```.
 
-# Usage
+# User Management
+
+For the time being, user management is handled through composer scripts. Eventually, the admin panel should include a user manager as well.
+
+### Register a new user
+
+New users can be created using the ```composer user register [name] [email] [password]``` command. This command accepts three additional parameters: name, email address and password. The email address is the identifier and must be unique. The name does not have to be unique. For example:
+
+```bash
+composer user register John john@example.com admin123
+```
+
+### Set new password
+
+Passwords can be changed using the ```composer user set_password [email] [new password]``` command. This command accepts two additional parameters: the email address (identifier) and the new password. For example:
+
+```bash
+composer user set_password john@example.com hunter2
+```
+
+### Delete a user
+
+Users can be deleted using the ```composer user delete [email]``` command.
+
+```bash
+composer user delete john@example.com
+```
+
+### Get list of users
+
+You can see a list of all registered users using the ```composer user list``` command.
+
+# Admin Panel
+
+The admin panel can be accessed by approaching the ```/admin``` route.
 
 ## Registering a new form
 
-#### Create new form entry
+#### Create new form record
 
-Register a new form by running the ```form``` command. This command will create a new form entry in the database with a randomly generated public ID. The command will return this ID in the output.
+After logging in, you are redirected to the ```/admin``` page. This page lists all the forms in the system. You can create a new form by clicking the "new form" button below the records, and entering a display name. Once created, you will be redirected to the edit page for that form.
 
-```bash
-composer form
-```
+#### CORS whitelist
 
-Optionally, the command accepts a comma delimited string as a parameter which will server as the whitelist for allowed CORS origins. If no parameters is provided, you will have to set origins later when editing the database record.
+You can set allowed cross-origins in the ```whitelist``` field. The syntax is a simple ```,``` or ```, ``` delimited string. For example:
 
-```bash
-composer form "https://example.com"
+```csv
+https://example.com, https://cors.org
 ```
 
 #### Set field validation rules
 
-After the record has been created, add a json array containing validation rules in the ```validation_rules``` column field. This JSON string will be loaded as a PHP array via the ```json_decode()``` function and passed to the validation method. For example:
+After the record has been created, add a json array containing validation rules in the "Validation Rules" field. This JSON string will be loaded as a PHP array via the ```json_decode()``` function and passed to the validation method. For example:
 
 ```json
 {
@@ -53,17 +85,9 @@ After the record has been created, add a json array containing validation rules 
 
 The fields are validated using the ```rakit/validation``` library. Its documentation can be found [on Github](https://github.com/rakit/validation).
 
-#### CORS whitelist
-
-You can set allowed cross-origins in the ```whitelist``` column. The syntax is a simple ```,``` or ```, ``` delimited string. For example:
-
-```csv
-https://example.com, https://cors.org
-```
-
 #### Notification Methods
 
-You can configure how you would like to be notified upon form submission for each form. This is done through json stored in the ```notifiers``` column. You can add new notification methods by creating a new file in the ```forms_api/app/components/notify/notifiers``` folder. All PHP files in this folder are included automatically.
+You can configure how you would like to be notified upon form submission for each form. This is done through json stored in the "Notification Settings" field. You can add new notification methods by creating a new file in the ```forms_api/app/components/notify/notifiers``` folder. All PHP files in this folder are included automatically.
 
 Example configuration for email notifications:
 
@@ -99,3 +123,5 @@ https://<your-api-domain>/form/<public_ID>
 ```
 
 For example: ```https://forms.example.com/form/SaGWK0muFVJG9RUkNpqMR3FMTB84BsHu```
+
+This information is also displayed on the edit page as two read-only fields containing the ```public_id``` and the public url from that id.
