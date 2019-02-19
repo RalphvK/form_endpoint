@@ -6612,6 +6612,30 @@ mixins
     font-size: 25px;
     margin-left: -25px; }
 
+.edit-code .example-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ffffff;
+  opacity: 0.5;
+  cursor: pointer; }
+  .edit-code .example-btn:hover {
+    opacity: 1; }
+
+.edit-code .example-code {
+  background-color: rgba(58, 83, 155, 0.1); }
+  .edit-code .example-code pre {
+    color: #ffffff;
+    opacity: 0.8;
+    padding: 25px; }
+
+.icon-btn {
+  display: block;
+  border: none;
+  font-size: 20px;
+  padding: 10px 25px;
+  margin-right: -15px; }
+
 body {
   background-color: #f8f9fa; }
 
@@ -6648,12 +6672,6 @@ body {
       font-size: 12px; }
     .listings .card .buttons {
       margin-left: auto; }
-      .listings .card .buttons .icon-btn {
-        display: block;
-        border: none;
-        font-size: 20px;
-        padding: 10px 25px;
-        margin-right: -15px; }
 
 .create-section {
   text-align: center;

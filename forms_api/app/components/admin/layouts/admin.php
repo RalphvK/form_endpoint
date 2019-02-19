@@ -64,6 +64,7 @@
             // tooltips
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip();
+                $('.example-btn').tooltip();
             });
         });
     </script>

@@ -39,6 +39,16 @@
             <section class="edit-code">
                 <div class="card code-card">
                     <h3><i class="icon ion-ios-checkbox"></i> Validation Rules</h3>
+                    <i class="icon ion-ios-information-circle-outline icon-md icon-btn example-btn" data-toggle="collapse" data-target="#validation-example-collapse" data-placement="left" title="View Example"></i>
+                    <div id="validation-example-collapse" class="example-code collapse">
+<pre>
+{
+   "name": "required|min:2|max:200",
+   "company": "max:200",
+   "email": "required|email",
+   "message": "required|min:10|max:50000"
+}</pre>
+                    </div>
                     <pre id="editor-rules" class="editor">
 <?= $this->form->validation_rules; ?></pre>
                 </div>
@@ -47,6 +57,30 @@
             <section class="edit-code">
                 <div class="card code-card">
                     <h3><i class="icon ion-ios-notifications"></i> Notification Settings</h3>
+                    <i class="icon ion-ios-information-circle-outline icon-md icon-btn example-btn" data-toggle="collapse" data-target="#notifiers-example-collapse" data-placement="left" title="View Example"></i>
+                    <div id="notifiers-example-collapse" class="example-code collapse">
+<pre>
+{
+    "email": {
+        "smtp": {
+            "host": "smtp.example.com",
+            "port": "465",
+            "username": "example",
+            "password": "",
+            "from_address": "noreply@example.com",
+            "from_name": "Form Endpoint"
+        },
+        "to": {
+            "address": "admin@example.com",
+            "name": "Admin"
+        },
+        "replyTo": {
+            "address_field": "email",
+            "name_field": "name"
+        }
+    }
+}</pre>
+                    </div>
                     <pre id="editor-notify" class="editor">
 <?= $this->form->notifiers; ?></pre>
                 </div>
