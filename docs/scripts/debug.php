@@ -2,7 +2,7 @@
 
     require __DIR__.'/config.php';
 
-    $_ENV['environment'] = 'debug';
+    $_ENV['ENVIRONMENT'] = 'debug';
 
     // bootstrap
     echo "\n\033[102m DOCUMENT START \033[0m\n\n";

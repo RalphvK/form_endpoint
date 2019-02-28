@@ -2,16 +2,6 @@
 
     session_start();
 
-    // error reporting
-    if (isset($_ENV['environment']) && $_ENV['environment'] == 'debug') {
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
-    } else {
-        error_reporting(0);
-        ini_set('display_errors', 0);
-    }
-
     ini_set("implicit_flush", 1);
     while (@ob_end_flush());
     ob_implicit_flush(true);
@@ -22,6 +12,16 @@
     // load ENV
     $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
     $dotenv->load();
+
+    // error reporting
+    if (isset($_ENV['ENVIRONMENT']) && $_ENV['ENVIRONMENT'] == 'DEBUG') {
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+    } else {
+        error_reporting(0);
+        ini_set('display_errors', 0);
+    }
 
     // helpers
     require __DIR__.'/helpers/path.php';

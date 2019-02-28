@@ -2,7 +2,7 @@
 
     require __DIR__.'/config.php';
 
-    $_ENV['environment'] = 'debug';
+    $_ENV['ENVIRONMENT'] = 'debug';
     $_ENV['cli'] = true;
 
     // bootstrap

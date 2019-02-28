@@ -63,7 +63,7 @@
      */
     $router->respond('GET', '/login', function ($request, $response, $service) {
         require path::bootstrap('admin');
-        $service->layout(path::component('auth', 'layouts/login.php'));
+        $service->layout(path::app('layouts/login.php'));
         if (auth::loggedIn()) {
             redirect::relative('/admin');
         } else {
@@ -75,7 +75,7 @@
     form CRUD
     */
     $router->respond(function ($request, $response, $service) {
-        $service->layout(path::component('admin', 'layouts/admin.php'));
+        $service->layout(path::app('layouts/admin.php'));
     });
     // index
     $router->respond('GET', '/admin', function (...$args) {
@@ -114,6 +114,17 @@
             return formController::delete($request);
         }
     
+    });
+
+    /*
+    account routes
+    */
+    // index
+    $router->respond('GET', '/account', function (...$args) {
+        require path::bootstrap('admin');
+        auth::protect();
+        require path::component('account', 'controllers/accountController.php');
+        return accountController::read(...$args);
     });
 
     $router->dispatch();
