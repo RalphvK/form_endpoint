@@ -6188,6 +6188,13 @@ Buttons
   font-size: 0.7em; }
   .btn.icon-padding {
     padding: 5px 25px; }
+  .btn.btn-noline-primary {
+    color: #3a539b;
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent; }
+    .btn.btn-noline-primary:hover {
+      border-color: #3a539b; }
 
 form.delete-button {
   display: inline; }

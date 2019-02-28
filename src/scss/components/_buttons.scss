@@ -34,4 +34,14 @@ Buttons
     &.icon-padding {
         padding: 5px 25px;
     }
+
+    &.btn-noline-primary {
+        color: $primary;
+        background-color: transparent;
+        background-image: none;
+        border-color: transparent;
+        &:hover {
+            border-color: $primary;
+        }
+    }
 }
