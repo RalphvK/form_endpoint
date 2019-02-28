@@ -20,14 +20,16 @@
                 <div class="navbar-button" data-var="navbar-button">
                     <?php include(path::component('admin', 'partials/navbar-button.php')) ?>
                 </div>
-                <div class="dropdown account-btn">
-                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown account-btn btn-group">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="icon ion-ios-contact icon-lg"></i>
                         <?= $_SESSION['name']; ?>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/auth/logout">Logout</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item button-text" href="/users"><i class="icon ion-ios-people icon-md"></i> Manage Users</a>
+                        <a class="dropdown-item button-text" href="/account"><i class="icon ion-ios-contact icon-md"></i> My Account</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item button-text text-danger" href="/auth/logout"><i class="icon ion-md-exit icon-md"></i> Logout</a>
                     </div>
                 </div>
             </div>

@@ -30,7 +30,7 @@ $navbar: (
         margin-left: auto;
         
         button {
-            @include button-type();
+            @include button-text();
             background-color: transparent;
             margin: 0 0;
             color: map-get($navbar, 'color');

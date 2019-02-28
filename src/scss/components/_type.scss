@@ -9,6 +9,16 @@
     @include display-text();
 }
 
+@mixin button-text() {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7em;
+    font-weight: $btn-font-weight;
+}
+.button-text {
+    @include button-text();
+}
+
 @mixin small-title() {
     font-weight: 600;
     font-size: 0.9em;

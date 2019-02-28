@@ -1,16 +1,8 @@
 /*
 Buttons
 */
-
-@mixin button-type() {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.7em;
-    font-weight: $btn-font-weight;
-}
-
 :root .btn {
-    @include button-type();
+    @include button-text();
     padding: $input-btn-padding-y $input-btn-padding-x;
 }
 

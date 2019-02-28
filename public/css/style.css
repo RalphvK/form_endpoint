@@ -6038,10 +6038,26 @@ a.text-dark:hover, a.text-dark:focus {
   .table-bordered td {
     border: 1px solid #ddd !important; } }
 
+:focus {
+  outline: none !important; }
+
+::-moz-focus-inner {
+  border: 0 !important; }
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto; }
+
 .display-text, .btn {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px; }
+
+.button-text {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7em;
+  font-weight: 600; }
 
 .small-title {
   font-weight: 600;
