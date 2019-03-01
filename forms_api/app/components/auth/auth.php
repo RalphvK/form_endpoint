@@ -73,7 +73,7 @@
 
         static public function loggedIn()
         {
-            if ($_SESSION['loggedIn'] === true) {
+            if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
                 return true;
             } else {
                 return false;

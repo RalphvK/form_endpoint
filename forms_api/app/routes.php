@@ -63,7 +63,7 @@
      */
     $router->respond('GET', '/login', function ($request, $response, $service) {
         require path::bootstrap('admin');
-        $service->layout(path::app('layouts/login.php'));
+        $service->layout(path::component('auth', 'layouts/login.php'));
         if (auth::loggedIn()) {
             redirect::relative('/admin');
         } else {
