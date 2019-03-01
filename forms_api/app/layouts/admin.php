@@ -81,10 +81,16 @@
                 theme: "ace/theme/dracula",
                 mode: "ace/mode/json"
             };
-            window.editor_rules = ace.edit("editor-rules", editor_options);
-            window.editor_notify = ace.edit("editor-notify", editor_options);
+            if ($("#editor-rules").length > 0) {
+                window.editor_rules = ace.edit("editor-rules", editor_options);
+            }
+            if ($("#editor-notify").length > 0) {
+                window.editor_notify = ace.edit("editor-notify", editor_options);
+            }
         });
     </script>
+
+    <?= layoutScripts::output('javascript', '<script>', "</script>"); ?>
 
 </body>
 
