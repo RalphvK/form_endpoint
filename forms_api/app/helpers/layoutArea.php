@@ -18,15 +18,22 @@
          */
         static public function append($area, $content)
         {
-            if (!is_array(self::$areas[$area])) {
+            if (!isset(self::$areas[$area]) || !is_array(self::$areas[$area])) {
                 self::$areas[$area] = [];
             }
             self::$areas[$area][] = $content;
         }
 
-        static public function appendFile($area, $path)
+        static public function appendFile($area, $path, $tag = null)
         {
             $content = file_get_contents($path);
+            if ($tag) {
+                $tag = [
+                    "open" => '<'.$tag.'>',
+                    "close" => '</'.$tag.'>'
+                ];
+                $content .= $tag['open'] . "\n" . $content . "\n" . $tag['close'];
+            }
             return self::append($area, $content);
         }
 

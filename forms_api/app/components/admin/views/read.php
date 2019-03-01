@@ -102,8 +102,11 @@
                     </div>
                 </div>
             </section>
-
-            <?php layoutArea::appendFile('scripts', path::component('admin', 'partials/ace.html')); ?>
+    
+            <?php
+                layoutArea::appendFile('scripts', path::component('admin', 'partials/submitEditForm.js'), 'script');
+                layoutArea::appendFile('scripts', path::component('admin', 'partials/ace.html'));
+            ?>
 
             <?php } else { // if not object ?>
                 <div class="jumbotron text-center mt-5">
