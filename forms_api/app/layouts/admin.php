@@ -18,7 +18,7 @@
         <div id="main-nav" class="navbar">
             <div class="container">
                 <div class="navbar-button" data-var="navbar-button">
-                    <?php include(path::component('admin', 'partials/navbar-button.php')) ?>
+                    <?php include(path::app('layouts/partials/navbar-button.php')) ?>
                 </div>
                 <div class="dropdown account-btn btn-group">
                     <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,26 +71,7 @@
         });
     </script>
 
-    <!-- ace -->
-    <script src="/js/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-        $(document).ready(function () {
-            var editor_options = {
-                autoScrollEditorIntoView: true,
-                maxLines: 100,
-                theme: "ace/theme/dracula",
-                mode: "ace/mode/json"
-            };
-            if ($("#editor-rules").length > 0) {
-                window.editor_rules = ace.edit("editor-rules", editor_options);
-            }
-            if ($("#editor-notify").length > 0) {
-                window.editor_notify = ace.edit("editor-notify", editor_options);
-            }
-        });
-    </script>
-
-    <?= layoutScripts::output('javascript', '<script>', "</script>"); ?>
+    <?= layoutArea::render('scripts'); ?>
 
 </body>
 

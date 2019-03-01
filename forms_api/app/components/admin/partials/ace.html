@@ -1,0 +1,18 @@
+    <!-- ace -->
+    <script src="/js/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(document).ready(function () {
+            var editor_options = {
+                autoScrollEditorIntoView: true,
+                maxLines: 100,
+                theme: "ace/theme/dracula",
+                mode: "ace/mode/json"
+            };
+            if ($("#editor-rules").length > 0) {
+                window.editor_rules = ace.edit("editor-rules", editor_options);
+            }
+            if ($("#editor-notify").length > 0) {
+                window.editor_notify = ace.edit("editor-notify", editor_options);
+            }
+        });
+    </script>

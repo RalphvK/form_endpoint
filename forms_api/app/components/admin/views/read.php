@@ -103,6 +103,8 @@
                 </div>
             </section>
 
+            <?php layoutArea::appendFile('scripts', path::component('admin', 'partials/ace.html')); ?>
+
             <?php } else { // if not object ?>
                 <div class="jumbotron text-center mt-5">
                     <h3><?= $this->escape($this->form); ?></h3>
