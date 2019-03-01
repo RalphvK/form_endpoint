@@ -159,8 +159,10 @@ $.fn.materializeInputs = function(selectors) {
 $(document.body).buttonClass('.group-disabled input', function () {
     $(this).select();
 });
-$(document).on('keydown', 'input, textarea', function () {
-    $('.navbar-button').addClass('visible');
+$(document).ready(function () {
+    $('.trigger-save').on('keydown', 'input, textarea', function () {
+        $('.navbar-button').addClass('visible');
+    });
 });
 function submitEditForm(url) {
     var data = {

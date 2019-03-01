@@ -10,7 +10,7 @@
                 </a>
             </section>
 
-            <section class="edit-meta">
+            <section class="edit-meta trigger-save">
                 <form class="card">
                     <div class="form-group input-material">
                         <input type="text" class="form-control" id="name-field" name="name" required value="<?= $this->escape($this->form->name); ?>">
@@ -23,7 +23,7 @@
                 </form>
             </section>
 
-            <section class="edit-meta">
+            <section class="edit-meta trigger-save">
                 <form class="card">
                     <div class="form-group input-material group-disabled">
                         <input type="text" class="form-control" id="name-field" name="name" readonly value="<?= $this->escape($this->form->public_id); ?>">
@@ -36,7 +36,7 @@
                 </form>
             </section>
 
-            <section class="edit-code">
+            <section class="edit-code trigger-save">
                 <div class="card code-card">
                     <h3><i class="icon ion-ios-checkbox"></i> Validation Rules</h3>
                     <i class="icon ion-ios-information-circle-outline icon-md icon-btn example-btn" data-toggle="collapse" data-target="#validation-example-collapse" data-placement="left" title="View Example"></i>
@@ -54,7 +54,7 @@
                 </div>
             </section>
 
-            <section class="edit-code">
+            <section class="edit-code trigger-save">
                 <div class="card code-card">
                     <h3><i class="icon ion-ios-notifications"></i> Notification Settings</h3>
                     <i class="icon ion-ios-information-circle-outline icon-md icon-btn example-btn" data-toggle="collapse" data-target="#notifiers-example-collapse" data-placement="left" title="View Example"></i>
@@ -86,7 +86,7 @@
                 </div>
             </section>
 
-            <section class="edit-meta">
+            <section class="edit-meta trigger-save">
                 <div class="card">
                     <button type="button" class="btn btn-outline-danger icon-padding" data-toggle="collapse" data-target="#delete-form-collapse">
                         <i class="icon ion-ios-nuclear icon-md"></i> Delete Permanently
