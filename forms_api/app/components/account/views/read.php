@@ -6,25 +6,28 @@
                 </a>
             </section>
 
-            <section class="edit-meta">
-                <form class="card">
+            <section class="edit-meta trigger-save">
+                <form id="identity-form" class="card parsley-form">
                     <div class="form-group input-material">
-                        <input type="text" class="form-control" id="name-field" name="name" value="<?= $this->escape($this->user->name); ?>">
+                        <input type="text" class="form-control" id="name-field" name="name" value="<?= $this->escape($this->user->name); ?>" minlength="2" maxlength="50">
                         <label for="name-field">Name</label>
                     </div>
                     <div class="form-group input-material">
-                        <input type="text" class="form-control" id="email-field" name="email" value="<?= $this->escape($this->user->email); ?>">
+                        <input type="text" class="form-control" id="email-field" name="email" value="<?= $this->escape($this->user->email); ?>" data-parsley-type="email">
                         <label for="email-field">Email address</label>
                     </div>
                 </form>
             </section>
 
             <section class="edit-meta">
-                <form class="card">
-                    <button type="button" class="btn btn-outline-primary icon-padding" data-toggle="modal" data-target="#passwordModal">
+                <div class="card" style="flex-direction: row; align-items: center;">
+                    <button type="button" class="btn btn-outline-primary icon-padding mr-4" data-toggle="modal" data-target="#passwordModal" onclick="$('#password-success').collapse('hide');">
                         <i class="icon ion-ios-key icon-md"></i> Change Password
                     </button>
-                </form>
+                    <span id="password-success" class="collapse text-success" style="margin-right: auto;">
+                        <i class="icon ion-ios-checkmark icon-md"></i> Password changed!
+                    </span>
+                </div>
             </section>
 
             <!-- Modal -->
@@ -32,24 +35,30 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <form>
+                            <form id="password-form" class="parsley-form">
                                 <div class="form-group input-material">
-                                    <input type="password" class="form-control" id="old-password-field" name="old-password">
+                                    <input type="password" class="form-control" id="old-password-field" name="old-password" required>
                                     <label for="old-password-field">Old Password</label>
                                 </div>
                                 <div class="form-group input-material">
-                                    <input type="password" class="form-control" id="new-password-field" name="new-password">
+                                    <input type="password" class="form-control" id="new-password-field" name="new-password" minlength="5">
                                     <label for="new-password-field">New Password</label>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-noline-primary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Set Password</button>
+                            <button type="button" class="btn btn-primary" onclick="submitPassword();">Set Password</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <?php
+                layoutArea::appendFile('scripts', path::component('account', 'partials/parsley.js'), 'script');
+                layoutArea::appendFile('scripts', path::component('account', 'partials/submitEditForm.js'), 'script');
+                layoutArea::appendFile('scripts', path::component('account', 'partials/submitPassword.js'), 'script');
+            ?>
 
             <?php } else { // if not object ?>
                 <div class="jumbotron text-center mt-5">

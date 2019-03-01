@@ -32,7 +32,7 @@
                     "open" => '<'.$tag.'>',
                     "close" => '</'.$tag.'>'
                 ];
-                $content .= $tag['open'] . "\n" . $content . "\n" . $tag['close'];
+                $content = $tag['open'] . "\n" . $content . "\n" . $tag['close'];
             }
             return self::append($area, $content);
         }

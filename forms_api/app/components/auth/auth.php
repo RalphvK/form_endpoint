@@ -91,7 +91,7 @@
         static public function register($name, $email, $password)
         {
             // check if email is unique
-            if (ORM::for_table('users')->where('email', $email)->count() > 0) {
+            if (!self::isUnique('email', $email)) {
                 throw new Exception('Email address already registered.');
                 return false;
             }
@@ -103,6 +103,15 @@
             $user->save();
             $user->id = $user->id();
             return $user;
+        }
+
+        static public function isUnique($field, $value)
+        {
+            if (ORM::for_table('users')->where($field, $value)->count() > 0) {
+                return false;
+            } else {
+                return true;
+            }
         }
 
         static public function timestamp()
