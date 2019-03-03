@@ -51,7 +51,7 @@
             foreach (path::getComponents() as $key => $name) {
                 $path = path::component($name, '_routes.php');
                 if (file_exists($path)) {
-                    self::loadComponent($name);
+                    self::component($name);
                 }
             }
         }

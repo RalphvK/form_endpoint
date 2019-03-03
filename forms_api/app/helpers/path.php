@@ -79,7 +79,11 @@
          * @return array
          */
         static public function getComponents() {
-            return glob(self::app('components/*'));
+            $names = [];
+            foreach (glob(self::app('components/*')) as $key => $path) {
+                $names[] = basename($path);
+            }
+            return $names;
         }
 
         /**
