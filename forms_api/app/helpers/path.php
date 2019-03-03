@@ -74,6 +74,15 @@
         }
 
         /**
+         * get array of with all component names
+         *
+         * @return array
+         */
+        static public function getComponents() {
+            return glob(self::app('components/*'));
+        }
+
+        /**
          * include all files in folder
          *
          * @param string $path

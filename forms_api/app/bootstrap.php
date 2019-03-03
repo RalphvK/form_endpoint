@@ -30,7 +30,6 @@
     require path::app('helpers/json.php');
     require path::app('helpers/generate.php');
     require path::app('helpers/CORS.php');
-    require path::app('helpers/includeFolder.php');
     require path::app('helpers/environments.php');
     require path::app('helpers/redirect.php');
 
