@@ -49,7 +49,18 @@
 
         static public function delete($request)
         {
-
+            $user = ORM::for_table('users')->where('id', $request->user_id)->find_one();
+            if (!$user) {
+                return json_file([
+                    'error' => 'not_found',
+                    'error_message' => 'User could not be found.'
+                ], 'error');
+            }
+            if ($user->delete()) {
+                return json_file([], 'success');
+            } else {
+                return self::unknownError();
+            }
         }
 
         static public function unknownError()

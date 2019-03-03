@@ -22,7 +22,7 @@ function submitPassword() {
                 if (result.data.error == 'password_incorrect') {
                     $('#old-password-field').parsley().addError(result.data.error, { message: result.data.error_message, updateClass: true });
                 } else {
-                    alert('Unknown Error');
+                    $('#unknown_error-modal').modal('show');
                 }
             }
         }

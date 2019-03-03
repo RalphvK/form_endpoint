@@ -6048,6 +6048,12 @@ a.text-dark:hover, a.text-dark:focus {
   right: 0;
   left: auto; }
 
+.dropdown-menu {
+  z-index: 9; }
+
+.dropdown-item {
+  cursor: pointer; }
+
 .display-text, .btn {
   font-weight: 600;
   text-transform: uppercase;
@@ -6247,7 +6253,10 @@ form.delete-button {
   z-index: 1;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  transition: height 0.5s ease; }
+  .card.elevate {
+    z-index: 2; }
 
 /*
 mixins
@@ -6694,7 +6703,8 @@ body {
       font-family: 'Roboto Mono', monospace;
       font-size: 12px; }
     .listings .card .buttons {
-      margin-left: auto; }
+      margin-left: auto;
+      display: flex; }
 
 .create-section {
   text-align: center;

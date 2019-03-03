@@ -18,7 +18,7 @@ function submitCreateForm() {
                 if (result.data.error == 'email_not_unique') {
                     $('#email-field').parsley().addError(result.data.error, { message: result.data.error_message, updateClass: true });
                 } else {
-                    alert('Unknown Error');
+                    $('#unknown_error-modal').modal('show');
                 }
             }
         }

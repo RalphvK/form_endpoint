@@ -25,3 +25,28 @@
         require path::component('users', 'controllers/userController.php');
         return userController::create($request);
     });
+
+    // read, update, delete
+    $router->respond('/user/[:user_id]', function ($request, $response, $serivce) {
+        require path::bootstrap('admin');
+        auth::protect();
+        require path::component('users', 'controllers/userController.php');
+
+        // determine method
+        if (isset($_POST['_method'])) {
+            $method = $_POST['_method'];
+            unset($_POST['_method']);
+        } else {
+            $method = $request->method();
+        }
+
+        // methods
+        if ($method == 'GET') {
+            return userController::read($request, $response, $serivce);
+        } elseif ($method == 'PUT') {
+            return userController::update($request);
+        } elseif($method == 'DELETE') {
+            return userController::delete($request);
+        }
+    
+    });
