@@ -25,6 +25,16 @@
         }
 
         /**
+         * get path to router file
+         *
+         * @param string $name - name of file without .php extension
+         * @return string path to file
+         */
+        static public function router($name) {
+            return self::app('routes/'.$name.'.php');
+        }
+
+        /**
          * set or get openComponent
          *
          * @param string $name
