@@ -25,8 +25,10 @@
     /*
     component routes
     */
-    include path::component('auth', '_routes.php');
-    include path::component('admin', '_routes.php');
-    include path::component('account', '_routes.php');
+    routeLoader::component('auth');
+    routeLoader::component('admin');
+    routeLoader::component('account');
+    // load remaining components
+    routeLoader::allComponents();
 
     $router->dispatch();

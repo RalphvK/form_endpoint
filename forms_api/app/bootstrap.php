@@ -25,6 +25,7 @@
 
     // helpers
     require __DIR__.'/helpers/path.php';
+    require path::app('helpers/routeLoader.php');
     require path::app('helpers/database.php');
     require path::app('helpers/prettify.php');
     require path::app('helpers/json.php');
