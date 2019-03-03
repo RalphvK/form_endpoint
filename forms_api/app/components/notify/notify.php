@@ -6,7 +6,7 @@
 
         static public function init() {
             self::$methods = [];
-            includeFolder(path::this('notifiers'));
+            path::includeFolder(path::this('notifiers'));
         }
 
         static public function register($key, $className) {

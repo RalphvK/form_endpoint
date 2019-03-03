@@ -66,11 +66,25 @@
          * path in given component's folder
          *
          * @param string $component - name of component folder
-         * @param string $path - path after components/<name>/, defaults to "index.php"
+         * @param string $path - path after components/<name>/, defaults to "_index.php"
          * @return string
          */
-        static public function component($component, $path = "index.php") {
+        static public function component($component, $path = "_index.php") {
             return __DIR__.'/../components/'.$component.'/'.$path;
+        }
+
+        /**
+         * include all files in folder
+         *
+         * @param string $path
+         * @param string $file - expression to match against, defaults to '*.php'
+         * @return void
+         */
+        static public function includeFolder($path, $file = '*.php') {
+            foreach (glob($path.'/'.$file) as $filename)
+            {
+                include $filename;
+            }
         }
 
     }
