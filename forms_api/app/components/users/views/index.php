@@ -1,4 +1,11 @@
-            <section class="listings" data-var="user-index">
+            <section class="jumbo">
+                <a href="/admin">
+                    <i class="icon ion-ios-arrow-round-back"></i>
+                    User Manager
+                </a>
+            </section>
+            
+            <section class="listings pt-0" data-var="user-index">
                 <?php
                 if (isset($this->users) && is_array($this->users)) {
                     foreach ($this->users as $key => $user) {
