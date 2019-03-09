@@ -119,4 +119,85 @@
             return date("Y-m-d H:i:s");
         }
 
+        /**
+         * check if user has role
+         *
+         * @param ORM $user
+         * @param string $role
+         * @return boolean
+         */
+        static public function hasRole($user, $role)
+        {
+            $roles = self::getRoles($user);
+            if (self::roleInArray($roles, $role)['exists'] == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        /**
+         * add role to user
+         *
+         * @param ORM $user
+         * @param string $role
+         * @return ORM - user object
+         */
+        static public function addRole($user, $role)
+        {
+            $roles = self::getRoles($user);
+            if (self::roleInArray($user, $role)) {
+                return $user;
+            } else {
+                $roles[] = $role; // add new role
+                return self::setRoles($user, $roles);
+            }
+        }
+
+        /**
+         * remove role from user
+         *
+         * @param ORM $user
+         * @param string $role
+         * @return ORM - user object
+         */
+        static public function removeRole($user, $role)
+        {
+            $roles = self::getRoles($user);
+            $element = self::roleInArray($user, $role);
+            if (!$element) {
+                return $user;
+            } else {
+                unset($roles[$element['key']]);
+                return self::setRoles($user, $roles);
+            }
+        }
+
+        static public function getRoles($user)
+        {
+            if ($user->roles) {
+                return json_decode($user->roles, true); // to array
+            } else {
+                return []; // return empty array
+            }
+        }
+
+        static public function setRoles($user, $array)
+        {
+            $user->roles = json_encode($array);
+            return $user;
+        }
+
+        static public function roleInArray($roles, $role)
+        {
+            if (in_array($role, $roles)) {
+                return [
+                    'exists' => true,
+                    'key' => array_search($role, $roles)
+                ];
+            } else {
+                return false;
+            }
+        }
+
     }
