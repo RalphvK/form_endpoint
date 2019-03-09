@@ -55,7 +55,7 @@
             </div>
 
             <?php
-                layoutArea::appendFile('scripts', path::component('account', 'partials/parsley.js'), 'script');
+                layoutArea::appendFile('scripts', path::app('view/partials/parsley.js'), 'script');
                 layoutArea::appendFile('scripts', path::component('account', 'partials/submitEditForm.js'), 'script');
                 layoutArea::appendFile('scripts', path::component('account', 'partials/submitPassword.js'), 'script');
             ?>
