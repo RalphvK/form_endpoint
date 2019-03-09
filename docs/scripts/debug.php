@@ -62,7 +62,7 @@
         if (arg_is('form_user')) {
             require path::bootstrap('admin');
             echo "\033[92mexecuting: form_user::".$argv[2]."\033[94m\n";
-            eval("var_dump(form_user::".$argv[2].");");
+            eval("print_r(form_user::".$argv[2].");");
         }
 
     }
