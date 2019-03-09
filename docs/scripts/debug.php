@@ -3,6 +3,9 @@
     require __DIR__.'/config.php';
 
     $_ENV['ENVIRONMENT'] = 'debug';
+    $_ENV['cli'] = true;
+
+    session_start();
 
     // bootstrap
     echo "\n\033[102m DOCUMENT START \033[0m\n\n";
@@ -52,6 +55,14 @@
             require path::bootstrap('admin');
             require path::component('admin', 'formController.php');
             echo formController::index(null);
+        }
+
+        // form_user
+        // example command: composer debug form_user marry(11,14)
+        if (arg_is('form_user')) {
+            require path::bootstrap('admin');
+            echo "\033[92mexecuting: form_user::".$argv[2]."\033[94m\n";
+            eval("var_dump(form_user::".$argv[2].");");
         }
 
     }

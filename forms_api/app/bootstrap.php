@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-
     ini_set("implicit_flush", 1);
     while (@ob_end_flush());
     ob_implicit_flush(true);
