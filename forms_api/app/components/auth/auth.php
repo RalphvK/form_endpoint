@@ -8,10 +8,30 @@
          * @param boolean $redirect - controls whether to redirect, or to return a json response with status code 403 (used for api routes)
          * @return boolean returns true when authenticated
          */
-        static public function protect($redirect = true)
+        static public function protect($redirect = true, $roles = null)
         {
             if (self::loggedIn()) {
-                return true;
+                if (!$roles) {
+                    return true;
+                } else {
+                    // get user
+                    $user = ORM::for_table('users')->find_one($_SESSION['userID']);
+                    // update session
+                    self::updateSession($user);
+                    // look for match
+                    foreach ($roles as $key => $role) {
+                        if (self::hasRole($user, $role)) {
+                            return true;
+                        }
+                    }
+                    // if none found
+                    http_response_code(403);
+                    echo json_file([
+                        'error' => 'unauthorized',
+                        'error_message' => 'You have insufficient permissions.'
+                    ], 'error');
+                    exit;
+                }
             } else {
                 if ($redirect) {
                     redirect::relative($_ENV['ROUTE_LOGIN']);
