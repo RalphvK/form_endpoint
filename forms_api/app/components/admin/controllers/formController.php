@@ -4,7 +4,11 @@
 
         static public function index($request, $response, $service)
         {
-            $forms = ORM::for_table('forms')->find_many();
+            if (auth::hasRole('admin')) {
+                $forms = ORM::for_table('forms')->find_many();
+            } else {
+                $forms = form_user::getForms(auth::sessionUser()->id);
+            }
             if ($forms) {
                 $output = $forms;
             } else {
