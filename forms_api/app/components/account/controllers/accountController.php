@@ -29,11 +29,7 @@
         static public function update($request)
         {
             // validation rules
-            $rules = [
-                'name'                  => 'min:2|max:50',
-                'email'                 => 'email',
-                'new_password'          => 'min:5'
-            ];
+            $rules = (include path::component('users', 'validation_rules.php'));
             // then validate
             $validator = new Validator;
             $validation = $validator->validate($_POST, $rules);

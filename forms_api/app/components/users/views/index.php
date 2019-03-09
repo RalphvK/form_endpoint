@@ -119,7 +119,7 @@
             </div>
 
             <?php
-                layoutArea::appendFile('scripts', path::component('users', 'partials/parsley.js'), 'script');
+                layoutArea::appendFile('scripts', path::app('view/partials/parsley.js'), 'script');
                 layoutArea::appendFile('scripts', path::component('users', 'partials/submitCreateForm.js'), 'script');
                 layoutArea::appendFile('scripts', path::component('users', 'partials/elevateCard.js'), 'script');
                 layoutArea::appendFile('scripts', path::component('users', 'partials/deleteRequest.js'), 'script');

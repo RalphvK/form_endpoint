@@ -1,14 +1,14 @@
-function submitCreateForm() {
-    if (!$('#createForm').parsley().validate()) {
+function submitEditForm(url) {
+    if (!$('#identity-form').parsley().validate()) {
         return false;
     }
     var data = {
+        _method: 'PUT',
         name: $('#name-field').val(),
-        email: $('#email-field').val(),
-        password: $('#password-field').val()
+        email: $('#email-field').val()
     };
     $.ajax({
-        url: '/user',
+        url: url,
         type: 'POST',
         data: data,
         success: function (result) {
@@ -18,18 +18,9 @@ function submitCreateForm() {
                 if (result.data.error == 'email_not_unique') {
                     $('#email-field').parsley().addError(result.data.error, { message: result.data.error_message, updateClass: true });
                 } else {
-                    $('#unknown_error-modal').modal('show');
+                    alert('Unknown Error');
                 }
             }
         }
     });
-    return false;
 }
-
-// submit on enter
-$('#createForm').keypress(function (e) {
-    if (e.which == 13) {
-        submitCreateForm();
-        return false;
-    }
-});
