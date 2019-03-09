@@ -18,7 +18,7 @@
         <div id="main-nav" class="navbar">
             <div class="container">
                 <div class="navbar-button" data-var="navbar-button">
-                    <?php include(path::app('layouts/partials/navbar-button.php')) ?>
+                    <?php include(path::app('view/partials/navbar-button.php')) ?>
                 </div>
                 <div class="dropdown account-btn btn-group">
                     <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

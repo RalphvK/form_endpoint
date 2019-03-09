@@ -7,7 +7,7 @@
 
     // layout
     $router->respond(function ($request, $response, $service) {
-        $service->layout(path::app('layouts/admin.php'));
+        $service->layout(path::app('view/layouts/admin.php'));
     });
 
     // index
@@ -27,7 +27,7 @@
     });
 
     // read, update, delete
-    $router->respond('/user/[:user_id]', function ($request, $response, $serivce) {
+    $router->respond('/user/[:user_id]', function ($request, $response, $service) {
         require path::bootstrap('admin');
         auth::protect();
         require path::component('users', 'controllers/userController.php');
@@ -42,7 +42,7 @@
 
         // methods
         if ($method == 'GET') {
-            return userController::read($request, $response, $serivce);
+            return userController::read($request, $response, $service);
         } elseif ($method == 'PUT') {
             return userController::update($request);
         } elseif($method == 'DELETE') {
