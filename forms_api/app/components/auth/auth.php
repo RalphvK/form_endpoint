@@ -2,6 +2,8 @@
 
     class auth {
 
+        static protected $user;
+
         /**
          * protect a route
          *
@@ -15,7 +17,7 @@
                     return true;
                 } else {
                     // get user
-                    $user = ORM::for_table('users')->find_one($_SESSION['userID']);
+                    $user = self::sessionUser();
                     // update session
                     self::updateSession($user);
                     // look for match
@@ -81,6 +83,7 @@
 
         static public function updateSession($user)
         {
+            self::$user = $user;
             $_SESSION['userID'] = $user->id;
             $_SESSION['name'] = $user->name;
         }
@@ -89,6 +92,20 @@
         {
             session_unset();
             session_destroy();
+        }
+
+        static public function sessionUser()
+        {
+            if (self::loggedIn()) {
+                if (is_object(self::$user)) {
+                    return self::$user;
+                } else {
+                    self::$user = ORM::for_table('users')->find_one($_SESSION['userID']);
+                    return self::$user;
+                }
+            } else {
+                return false;
+            }
         }
 
         static public function loggedIn()
@@ -146,8 +163,12 @@
          * @param string $role
          * @return boolean
          */
-        static public function hasRole($user, $role)
+        static public function hasRole($role, $user = null)
         {
+            if (!$user) {
+                // get user from DB
+                $user = self::sessionUser();
+            }
             $roles = self::getRoles($user);
             if (self::roleInArray($roles, $role)['exists'] == true) {
                 return true;
